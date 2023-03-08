@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import styles from './employeeList.module.css'
 import { MdEdit, MdDeleteForever } from 'react-icons/md';
+import defaultphoto from '../../assets/pngfind.com-privacy-icon-png-4703547.png'
 
 export default function EmployeeList() {
     
     const listaEmpleados = [
         {   
             id: "",
-            photo: "https://img.freepik.com/vector-premium/icono-avatar-masculino-persona-desconocida-o-anonima-icono-perfil-avatar-predeterminado-usuario-redes-sociales-hombre-negocios-silueta-perfil-hombre-aislado-sobre-fondo-blanco-ilustracion-vectorial_735449-120.jpg",
+            photo: `${defaultphoto}`,
             name: "Juan",
             lastName: "Perez Cueto",
             position: "Administrador",
@@ -21,7 +22,7 @@ export default function EmployeeList() {
         },
         {   
             id: "",
-            photo: "https://img.freepik.com/vector-premium/icono-avatar-masculino-persona-desconocida-o-anonima-icono-perfil-avatar-predeterminado-usuario-redes-sociales-hombre-negocios-silueta-perfil-hombre-aislado-sobre-fondo-blanco-ilustracion-vectorial_735449-120.jpg",
+            photo: `${defaultphoto}`,
             name: "Maria",
             lastName: "Gonzalez Reyes",
             position: "Gerente de Marketing",
@@ -35,7 +36,7 @@ export default function EmployeeList() {
         },
         {   
             id: "",
-            photo: "https://img.freepik.com/vector-premium/icono-avatar-masculino-persona-desconocida-o-anonima-icono-perfil-avatar-predeterminado-usuario-redes-sociales-hombre-negocios-silueta-perfil-hombre-aislado-sobre-fondo-blanco-ilustracion-vectorial_735449-120.jpg",
+            photo: `${defaultphoto}`,
             name: "Esteban",
             lastName: "Dido Loízo",
             position: "CEO",
@@ -49,7 +50,7 @@ export default function EmployeeList() {
         },
         {   
             id: "",
-            photo: "https://img.freepik.com/vector-premium/icono-avatar-masculino-persona-desconocida-o-anonima-icono-perfil-avatar-predeterminado-usuario-redes-sociales-hombre-negocios-silueta-perfil-hombre-aislado-sobre-fondo-blanco-ilustracion-vectorial_735449-120.jpg",
+            photo: `${defaultphoto}`,
             name: "Miguel",
             lastName: "Decer Vantes",
             position: "Editor",
