@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './employeeList.module.css'
 import { MdEdit, MdDeleteForever } from 'react-icons/md';
 import defaultphoto from '../../assets/pngfind.com-privacy-icon-png-4703547.png'
+import employeeApiService from '../../apiServices/EmployeeApiService';
 
 export default function EmployeeList() {
     
@@ -64,12 +65,18 @@ export default function EmployeeList() {
         },
     ];
 
-    const [employeeList, setEmployeeList] = useState(listaEmpleados);
+    const [employeeList, setEmployeeList] = useState([]);
+
+    useEffect(() => {
+        employeeApiService.getAll().then((data) => {
+          setEmployeeList(data);
+          });
+      }, []);
 
 
   return (
     <div className = {styles.employeeListContainer}>
-      {listaEmpleados.map((employee)=> (
+      {employeeList.map((employee)=> (
             <div className = {styles.employeeCardContainer}>
                 <div className = {styles.employeeImgContainer}>
                     <img className = {styles.employeeImg}src={employee.photo} alt={`Foto ${employee.name} ${employee.lastName}`}/>
