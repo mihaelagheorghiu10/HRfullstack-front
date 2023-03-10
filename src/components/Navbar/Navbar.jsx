@@ -1,19 +1,22 @@
 import React from 'react'
-import { NavbarDiv } from './Navbar.styled'
-
+//import { NavbarDiv } from './Navbar.styled'
+import styles from './navbar.module.css'
+import logo from '../../assets/Logo.png'
+import { GiHamburgerMenu } from 'react-icons/gi'
 export default function Navbar() {
   return (
-    <NavbarDiv>
-      <div className="divLogo">
-        <img src="" alt="logoHR"></img>
+    //<NavbarDiv>
+    <div className={styles.divContenedor}>
+      <div className={styles.divLogo}>
+        <img className={styles.imgLogo} src={logo} alt="logoHR"></img>
       </div>
-      <div className="divSearch">
-        <input className="searcher"></input>
-        <button className="buttonSearch"></button>
+      <div className={styles.divTitle}>
+        <h1 className={styles.h1Title}>HR App</h1>
       </div>
-      <div className="divHamburguesa">
-        <button className="buttonHamburguesa"></button>
+      <div className={styles.divHamburguesa}>
+        <GiHamburgerMenu className={styles.hamburgerIcon} />
       </div>
-    </NavbarDiv>
+    </div>
+    //</NavbarDiv>
   )
 }
