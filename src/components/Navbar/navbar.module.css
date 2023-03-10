@@ -8,6 +8,26 @@
     top: 0; 
     position:fixed ;
     z-index:100 ;
-
 }
 
+.divLogo {
+    height: 95px;
+    width: 95px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    overflow: hidden;
+
+}
+.imgLogo {
+    height: 100%;
+}
+
+.hamburgerIcon {
+    font-size: 40px;
+    color:#2A2A2A;
+}
+.h1Title {
+    font-size: 40px;
+    color:#2A2A2A;
+}
