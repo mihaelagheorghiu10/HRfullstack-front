@@ -1,19 +1,21 @@
 import React from 'react'
-import { NavbarDiv } from './Navbar.styled'
+//import { NavbarDiv } from './Navbar.styled'
+import styles from './navbar.module.css'
 
 export default function Navbar() {
   return (
-    <NavbarDiv>
-      <div className="divLogo">
+    //<NavbarDiv>
+    <div className={styles.divContenedor}>
+      <div className={styles.divLogo}>
         <img src="" alt="logoHR"></img>
       </div>
-      <div className="divSearch">
-        <input className="searcher"></input>
-        <button className="buttonSearch"></button>
+      <div className={styles.divTitle}>
+        <h1 className={styles.h1Title}>HR App</h1>
       </div>
-      <div className="divHamburguesa">
-        <button className="buttonHamburguesa"></button>
+      <div className={styles.divHamburguesa}>
+        <button className={styles.buttonHamburguesa}></button>
       </div>
-    </NavbarDiv>
+    </div>
+    //</NavbarDiv>
   )
 }
