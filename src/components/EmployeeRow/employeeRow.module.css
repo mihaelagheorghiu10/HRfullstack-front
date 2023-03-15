@@ -1,0 +1,12 @@
+.actionButton {
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.editButton {
+  color: #55b6ff;
+}
+
+.deleteButton {
+  color: tomato;
+}

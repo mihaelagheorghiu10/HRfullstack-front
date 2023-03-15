@@ -1,12 +1,17 @@
-import React from 'react'
-//import { styles } from './employeeRow.module.css';
+import React from "react";
+import styles from "./employeeRow.module.css";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
 
-export default function EmployeeRow({employee}) {
+export default function EmployeeRow({ employee, deleteById }) {
   return (
     <tr>
       <td>{employee.id}</td>
-      <td><img src={employee.photo} alt={`Foto ${employee.name} ${employee.lastName}`} /></td>
+      <td>
+        <img
+          src={employee.photo}
+          alt={`Foto ${employee.name} ${employee.lastName}`}
+        />
+      </td>
       <td>{`${employee.name} ${employee.lastName}`}</td>
       <td>{employee.position}</td>
       <td>{employee.phone}</td>
@@ -17,10 +22,12 @@ export default function EmployeeRow({employee}) {
       <td>{employee.joiningDate}</td>
       <td>{employee.birthDate}</td>
       <td>
-        <MdEdit  />
-        <MdDeleteForever  />
+        <MdEdit className={`${styles.actionButton} ${styles.editButton}`} />
+        <MdDeleteForever
+          className={`${styles.actionButton} ${styles.deleteButton}`}
+          onClick={() => deleteById(employee.id)}
+        />
       </td>
     </tr>
-  )
+  );
 }
-

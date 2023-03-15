@@ -1,21 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import styles from './employeeTable.module.css'
-import employeeApiService from '../../apiServices/EmployeeApiService'
-import EmployeeRow from '../EmployeeRow/EmployeeRow'
+import React, { useState, useEffect } from "react";
+import styles from "./employeeTable.module.css";
+import employeeApiService from "../../apiServices/EmployeeApiService";
+import EmployeeRow from "../EmployeeRow/EmployeeRow";
 //import { Employee } from "../Employee/Employee";
 
 export default function EmployeeTable() {
-  const [employeeTable, setEmployeeTable] = useState([])
+  const [employeeTable, setEmployeeTable] = useState([]);
 
   useEffect(() => {
     employeeApiService.getAll().then((data) => {
-      setEmployeeTable(data)
-    })
-  }, [])
+      setEmployeeTable(data);
+    });
+  }, []);
+
+  const deleteById = (id) => {
+    employeeApiService.deleteById(id);
+    setEmployeeTable(employeeTable.filter((employee) => employee.id !== id));
+  };
 
   return (
-    <div>
-      <table className={styles.employeeTableContainer}>
+    <div className={styles.employeeTableContainer}>
+      <table className={styles.employeeTable}>
         <thead>
           <tr>
             <th>Id</th>
@@ -34,10 +39,14 @@ export default function EmployeeTable() {
         </thead>
         <tbody>
           {employeeTable.map((employee, index) => (
-            <EmployeeRow employee={employee} key={index} />
+            <EmployeeRow
+              employee={employee}
+              deleteById={deleteById}
+              key={index}
+            />
           ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }

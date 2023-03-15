@@ -1,14 +1,20 @@
-.employeeTableContainer {
-    padding: 30px;
-    background-color: #D9D9D9;
-    border-radius: 10px;
-    width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 150px;
-
+.employeeTable {
+  padding: 30px;
+  background-color: #d9d9d9;
+  margin: 0 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
-.employeeTableContainer img {
-    width: 100px;
-    height: 100px;
+.employeeTable img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.employeeTableContainer {
+  padding: 150px 0px;
+  padding-bottom: 0;
+  overflow-x: scroll;
+  box-sizing: border-box;
+  width: 100%;
 }
