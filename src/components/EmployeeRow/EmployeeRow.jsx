@@ -19,8 +19,8 @@ export default function EmployeeRow({ employee, deleteById }) {
       <td>{employee.location}</td>
       <td>{employee.salary}</td>
       <td>{employee.dni}</td>
-      <td>{employee.joiningDate}</td>
-      <td>{employee.birthDate}</td>
+      <td>{new Date(employee.joiningDate).toLocaleDateString("es-ES")}</td>
+      <td>{new Date(employee.birthDate).toLocaleDateString("es-ES")}</td>
       <td>
         <MdEdit className={`${styles.actionButton} ${styles.editButton}`} />
         <MdDeleteForever
