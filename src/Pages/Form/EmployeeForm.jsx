@@ -1,39 +1,47 @@
-import React from "react";
-import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
-import styles from "./employeeForm.module.css";
+import React from 'react'
+import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
+import styles from './employeeForm.module.css'
+import defaultPhoto from './Default.png'
 
 export default function EmployeeForm() {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      lastName: "",
-      email: "",
+      name: '',
+      lastName: '',
+      email: '',
     },
     validate,
     onSubmit: (values) => {
       // Aqui se cambia la funcion para crear o editar
-      alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values, null, 2))
     },
-  });
+  })
   return (
     <div className={styles.formPageContainer}>
-      <div className={styles.imgContainer}>
-        <img src="" alt="" srcset="" />
-      </div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
-        <div>
+        <div className={styles.imgColumn}>
           <div className={styles.labelInput}>
-            <label className={styles.formLabel} htmlFor="photo">
-              Foto
-            </label>
-            <input
-              id="photo"
-              name="photo"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.photo}
-            />
-            {formik.errors.photo ? <div>{formik.errors.photo}</div> : null}
+            <div className={styles.imgContainer}>
+              <img
+                className={styles.employeeImg}
+                src={defaultPhoto}
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div className={styles.labelInput}>
+              <label className={styles.formLabel} htmlFor="photo">
+                Foto
+              </label>
+              <input
+                id="photo"
+                name="photo"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.photo}
+              />
+              {formik.errors.photo ? <div>{formik.errors.photo}</div> : null}
+            </div>
           </div>
         </div>
 
@@ -194,80 +202,80 @@ export default function EmployeeForm() {
         <button type="submit">Submit</button>
       </form>
     </div>
-  );
+  )
 }
 
 // Validation function
 
 const validate = (values) => {
-  const errors = {};
+  const errors = {}
 
   if (!values.photo) {
     // Para cambiar
-    errors.photo = "Required";
+    errors.photo = 'Required'
   } else if (values.photo.length > 15) {
-    errors.photo = "Must be 15 characters or less";
+    errors.photo = 'Must be 15 characters or less'
   }
 
   if (!values.name) {
-    errors.firstName = "Required";
+    errors.firstName = 'Required'
   } else if (values.name.length > 15) {
-    errors.name = "Must be 15 characters or less";
+    errors.name = 'Must be 15 characters or less'
   }
 
   if (!values.lastName) {
-    errors.lastName = "Required";
+    errors.lastName = 'Required'
   } else if (values.lastName.length > 20) {
-    errors.lastName = "Must be 20 characters or less";
+    errors.lastName = 'Must be 20 characters or less'
   }
 
   if (!values.dni) {
-    errors.dni = "Required";
+    errors.dni = 'Required'
   } else if (values.dni.length > 20) {
-    errors.dni = "Must be 20 characters or less";
+    errors.dni = 'Must be 20 characters or less'
   }
 
   if (!values.position) {
-    errors.position = "Required";
+    errors.position = 'Required'
   } else if (values.position.length > 20) {
-    errors.position = "Must be 20 characters or less";
+    errors.position = 'Must be 20 characters or less'
   }
 
   if (!values.location) {
-    errors.location = "Required";
+    errors.location = 'Required'
   } else if (values.location.length > 20) {
-    errors.location = "Must be 20 characters or less";
+    errors.location = 'Must be 20 characters or less'
   }
 
   if (!values.phone) {
-    errors.phone = "Required";
+    errors.phone = 'Required'
   } else if (values.phone.length > 20) {
-    errors.phone = "Must be 20 characters or less";
+    errors.phone = 'Must be 20 characters or less'
   }
 
   if (!values.email) {
-    errors.email = "Required";
+    errors.email = 'Required'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
+    errors.email = 'Invalid email address'
   }
 
   if (!values.salary) {
-    errors.salary = "Required";
+    errors.salary = 'Required'
   } else if (values.salary.length > 20) {
-    errors.salary = "Must be 20 characters or less";
+    errors.salary = 'Must be 20 characters or less'
   }
 
   if (!values.joiningDate) {
-    errors.joiningDate = "Required";
+    errors.joiningDate = 'Required'
   } else if (values.joiningDate.length > 20) {
-    errors.joiningDate = "Must be 20 characters or less";
+    errors.joiningDate = 'Must be 20 characters or less'
   }
 
   if (!values.birthDate) {
-    errors.birthDate = "Required";
+    errors.birthDate = 'Required'
   } else if (values.birthDate.length > 20) {
-    errors.birthDate = "Must be 20 characters or less";
+    errors.birthDate = 'Must be 20 characters or less'
   }
 
-  return errors;
-};
+  return errors
+}
