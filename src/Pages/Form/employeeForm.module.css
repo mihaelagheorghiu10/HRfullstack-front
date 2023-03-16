@@ -46,8 +46,8 @@
 }
 
 .imgContainer {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,4 +68,12 @@
 
 .formLabel {
     padding: 2px 10px;
+}
+
+.submitButton {
+    width: 100px;
+}
+
+.formInput {
+    border-radius: 10px;
 }
