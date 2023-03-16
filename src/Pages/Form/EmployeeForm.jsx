@@ -5,7 +5,7 @@ import styles from "./employeeForm.module.css";
 export default function EmployeeForm() {
   const formik = useFormik({
     initialValues: {
-      firstName: "",
+      name: "",
       lastName: "",
       email: "",
     },
@@ -52,6 +52,18 @@ export default function EmployeeForm() {
         value={formik.values.lastName}
       />
       {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+
+      <label className={styles.formLabel} htmlFor="dni">
+        DNI/NIE
+      </label>
+      <input
+        id="dni"
+        name="dni"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.dni}
+      />
+      {formik.errors.dni ? <div>{formik.errors.dni}</div> : null}
 
       <label className={styles.formLabel} htmlFor="position">
         Cargo
@@ -113,6 +125,30 @@ export default function EmployeeForm() {
       />
       {formik.errors.salary ? <div>{formik.errors.salary}</div> : null}
 
+      <label className={styles.formLabel} htmlFor="joiningDate">
+        Fecha de Ingreso
+      </label>
+      <input
+        id="joiningDate"
+        name="joiningDate"
+        type="date"
+        onChange={formik.handleChange}
+        value={formik.values.joiningDate}
+      />
+      {formik.errors.joiningDate ? <div>{formik.errors.joiningDate}</div> : null}
+
+      <label className={styles.formLabel} htmlFor="birthDate">
+        Fecha de Nacimiento
+      </label>
+      <input
+        id="birthDate"
+        name="birthDate"
+        type="date"
+        onChange={formik.handleChange}
+        value={formik.values.birthDate}
+      />
+      {formik.errors.birthDate ? <div>{formik.errors.birthDate}</div> : null}
+
       <button type="submit">Submit</button>
     </form>
   );
@@ -140,6 +176,12 @@ const validate = (values) => {
     errors.lastName = "Required";
   } else if (values.lastName.length > 20) {
     errors.lastName = "Must be 20 characters or less";
+  }
+
+  if (!values.dni) {
+    errors.dni = "Required";
+  } else if (values.dni.length > 20) {
+    errors.dni = "Must be 20 characters or less";
   }
 
   if (!values.position) {
@@ -170,6 +212,18 @@ const validate = (values) => {
     errors.salary = "Required";
   } else if (values.salary.length > 20) {
     errors.salary = "Must be 20 characters or less";
+  }
+
+  if (!values.joiningDate) {
+    errors.joiningDate = "Required";
+  } else if (values.joiningDate.length > 20) {
+    errors.joiningDate = "Must be 20 characters or less";
+  }
+
+  if (!values.birthDate) {
+    errors.birthDate = "Required";
+  } else if (values.birthDate.length > 20) {
+    errors.birthDate = "Must be 20 characters or less";
   }
 
   return errors;
