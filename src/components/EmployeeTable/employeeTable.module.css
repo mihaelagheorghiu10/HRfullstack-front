@@ -1,23 +1,72 @@
-.employeeTable {
-  padding: 30px;
+.employeeListContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height:100vh;
+  padding-top: 85px;
+}
+.employeeTableContainer {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: baseline;
+  background-color:  #d9d9d9;
+  overflow-x: scroll;
+  width: 90vw;
+  height:90vh;
+  border-radius: 10px;
+  font-size: 1em;
+  
+}
+
+.employeeHeadContainer {
+
+  width: 100%;
+  height: 50px;
+  padding: 5px 15px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap:10px;
+  margin-bottom: 15px;
+  
+}
+
+.employeeHeadContainer h3 {
+  font-size: 1.2em;
+  width: 120px;
+}
+
+.employeePhotoHead {
+  width: 80px !important;
+}
+
+/* .employeeBirthDateHead {
+  width: 140px !important;
+  font-size: 16px;
+} */
+/* .employeeTable {
+  padding: 30px 0px;
   background-color: #d9d9d9;
   margin: 0 30px;
   border-radius: 10px;
   box-sizing: border-box;
   border-collapse: separate;
   border-spacing: 0 1em;
-}
+  column-gap: 40px;
+  width:90vw;
+} */
 
 /* .employeeTable img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 } */
-
+/* 
 .employeeTableContainer {
   padding: 150px 0px;
   padding-bottom: 0;
   overflow-x: scroll;
   box-sizing: border-box;
   width: 100%;
-}
+} */

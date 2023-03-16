@@ -13,14 +13,38 @@ export default function EmployeeTable() {
     });
   }, []);
 
-  const deleteById = (id) => {
-    employeeApiService.deleteById(id);
+  const deleteById = (i => {
+    employeeApiNamervice.deleteById(id);
     setEmployeeTable(employeeTable.filter((employee) => employee.id !== id));
-  };
+  });
 
   return (
-    <div className={styles.employeeTableContainer}>
-      <table className={styles.employeeTable}>
+    <div className={styles.employeeListContainer}>
+      <div className={styles.employeeTableContainer}>
+        <div className={styles.employeeHeadContainer}>
+          {/* <h3 h3 className={styles.employeeIdHead}>Id</h3> */}
+          <h3 className={styles.employeePhotoHead}></h3>
+          <h3 className={styles.employeeNameHead}>Nombre</h3>
+          <h3 className={styles.employeePositionHead}>Cargo</h3>
+          <h3 className={styles.employeePhoneHead}>Teléfono</h3>
+          <h3 className={styles.employeeEmailHead}>Email</h3>
+          <h3 className={styles.employeeLocationHead}>Localidad</h3>
+          <h3 className={styles.employeeSalaryHead}>Salario</h3>
+          <h3 className={styles.employeeDNIHead}>DNI/NIE</h3>
+          <h3 className={styles.employeeJoiningDateHead}>Incorporacíon</h3>
+          <h3 className={styles.employeeBirthDateHead}>F. Nacimiento</h3>
+          <h3 className={styles.employeeActionsHead}>Acciones</h3>
+        </div>
+        
+        {employeeTable.map((employee, index,) => (
+            <EmployeeRow
+              employee={employee}
+              deleteById={deleteById}
+              key={index}
+            />
+          ))}
+        </div>
+      {/* <table className={styles.employeeTable}>
         <thead>
           <tr>
             <th>Id</th>
@@ -46,7 +70,7 @@ export default function EmployeeTable() {
             />
           ))}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 }

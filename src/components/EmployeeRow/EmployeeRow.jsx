@@ -4,30 +4,30 @@ import { MdEdit, MdDeleteForever } from "react-icons/md";
 
 export default function EmployeeRow({ employee, deleteById }) {
   return (
-    <tr className={styles.employeeRowContainer}>
-      <td>{employee.id}</td>
-      <td className={styles.tableImgContainer}>
+    <div className={styles.employeeRowContainer}>
+      {/* <p className= {styles.employeeId}>{employee.id}</p> */}
+      <div className={styles.tableImgContainer}>
         <img className={styles.tableImg}
           src={employee.photo}
           alt={`Foto ${employee.name} ${employee.lastName}`}
         />
-      </td>
-      <td>{`${employee.name} ${employee.lastName}`}</td>
-      <td>{employee.position}</td>
-      <td>{employee.phone}</td>
-      <td>{employee.email}</td>
-      <td>{employee.location}</td>
-      <td>{employee.salary}</td>
-      <td>{employee.dni}</td>
-      <td>{new Date(employee.joiningDate).toLocaleDateString("es-ES")}</td>
-      <td>{new Date(employee.birthDate).toLocaleDateString("es-ES")}</td>
-      <td>
+      </div>
+      <p className={styles.employeeName}>{`${employee.name} ${employee.lastName}`}</p>
+      <p className={styles.employeePosition}>{employee.position}</p>
+      <p className={styles.employeePhone}>{employee.phone}</p>
+      <p className={styles.employeeEmail}>{employee.email}</p>
+      <p className={styles.employeeLocation}>{employee.location}</p>
+      <p className={styles.employeeSalary}>{employee.salary}</p>
+      <p className={styles.employeeDNI}>{employee.dni}</p>
+      <p className={styles.employeeJoiningDate}>{new Date(employee.joiningDate).toLocaleDateString("es-ES")}</p>
+      <p className={styles.employeeBirthDate}>{new Date(employee.birthDate).toLocaleDateString("es-ES")}</p>
+      <div className={styles.employeeButtons}>
         <MdEdit className={`${styles.actionButton} ${styles.editButton}`} />
         <MdDeleteForever
           className={`${styles.actionButton} ${styles.deleteButton}`}
           onClick={() => deleteById(employee.id)}
         />
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 }
