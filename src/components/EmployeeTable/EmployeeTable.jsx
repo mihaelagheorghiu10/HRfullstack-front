@@ -32,7 +32,7 @@ export default function EmployeeTable() {
           <h3 className={styles.employeeSalaryHead}>Salario</h3>
           <h3 className={styles.employeeDNIHead}>DNI/NIE</h3>
           <h3 className={styles.employeeJoiningDateHead}>Incorporacíon</h3>
-          <h3 className={styles.employeeBirthDateHead}>F. Nacimiento</h3>
+          <h3 className={styles.employeeBirthDateHead}>Nacimiento</h3>
           <h3 className={styles.employeeActionsHead}>Acciones</h3>
         </div>
         

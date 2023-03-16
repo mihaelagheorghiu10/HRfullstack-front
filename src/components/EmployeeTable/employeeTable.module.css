@@ -1,12 +1,16 @@
-.employeeListContainer {
+/* .employeeListContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height:100vh;
   padding-top: 85px;
-}
+} */
 .employeeTableContainer {
+  position:fixed;
+  top:55%;
+  left:50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -14,7 +18,8 @@
   background-color:  #d9d9d9;
   overflow-x: scroll;
   width: 90vw;
-  height:90vh;
+  max-width: 1400px;
+  height:80vh;
   border-radius: 10px;
   font-size: 1em;
   

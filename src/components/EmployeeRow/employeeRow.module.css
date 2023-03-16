@@ -1,11 +1,12 @@
 .employeeRowContainer  {
   /* background-color: red; */
   
-  padding: 5px 15px;
+  padding: 5px 0px 5px 15px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap:10px;
-  border: solid 2px white;
+  border-top: solid 2px white;
+  border-bottom: solid 2px white;;
   align-items: center;
   
 }
