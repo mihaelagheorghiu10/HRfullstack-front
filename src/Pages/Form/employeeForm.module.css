@@ -19,10 +19,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 200px 30px;
+    padding: 250px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     width:75vw;
     height: 300px;
     max-width: 750px;
@@ -39,11 +40,11 @@
     justify-content: center;
 }
 
-.doubleInputs {
+/* .doubleInputs {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-}
+} */
 
 .imgContainer {
     width: 200px;
@@ -72,8 +73,15 @@
 
 .submitButton {
     width: 100px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 0;
+    
 }
 
 .formInput {
     border-radius: 10px;
+    border:none;
+    padding: 2px 5px;
+    background-color: #f5f5f5;
 }

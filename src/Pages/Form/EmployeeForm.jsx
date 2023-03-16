@@ -64,6 +64,7 @@ export default function EmployeeForm() {
               <div className={styles.errorToast}>{formik.errors.name}</div>
             ) : null}
           </div>
+
           <div className={styles.labelInput}>
             <label className={styles.formLabel} htmlFor="lastName">
               Apellidos
@@ -80,9 +81,8 @@ export default function EmployeeForm() {
               <div className={styles.errorToast}>{formik.errors.lastName}</div>
             ) : null}
           </div>
-        </div>
 
-        <div className={styles.labelInput}>
+          <div className={styles.labelInput}>
           <label className={styles.formLabel} htmlFor="dni">
             DNI/NIE
           </label>
@@ -213,8 +213,11 @@ export default function EmployeeForm() {
             <div className={styles.errorToast}>{formik.errors.birthDate}</div>
           ) : null}
         </div>
+        </div>
+
+        
         <button className={styles.submitButton} type="submit">
-          Submit
+          Enviar
         </button>
       </form>
     </div>
