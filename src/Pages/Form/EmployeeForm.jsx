@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./employeeForm.module.css";
 import defaultPhoto from "./Default.png";
+import { GiCancel } from "react-icons/gi";
 
 export default function EmployeeForm() {
   const formik = useFormik({
@@ -20,6 +21,9 @@ export default function EmployeeForm() {
     <div className={styles.formPageContainer}>
       <div className={styles.darkBackground}></div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
+        <div className={styles.cancelButton}>
+          <GiCancel/>
+        </div>
         <div className={styles.imgColumn}>
           <div className={styles.imgContainer}>
             <img

@@ -5,6 +5,13 @@
  
 }
 
+.cancelButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    color: #333333
+}
 .darkBackground {
     background-color: black ;
     opacity: 0.3;
