@@ -16,141 +16,184 @@ export default function EmployeeForm() {
     },
   });
   return (
-    <form className={styles.formPage} onSubmit={formik.handleSubmit}>
-      <label className={styles.formLabel} htmlFor="photo">
-        Foto
-      </label>
-      <input
-        id="photo"
-        name="photo"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.photo}
-      />
-      {formik.errors.photo ? <div>{formik.errors.photo}</div> : null}
+    <div className={styles.formPageContainer}>
+      <div className={styles.imgContainer}>
+        <img src="" alt="" srcset="" />
+      </div>
+      <form className={styles.formPage} onSubmit={formik.handleSubmit}>
+        <div>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="photo">
+              Foto
+            </label>
+            <input
+              id="photo"
+              name="photo"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.photo}
+            />
+            {formik.errors.photo ? <div>{formik.errors.photo}</div> : null}
+          </div>
+        </div>
 
-      <label className={styles.formLabel} htmlFor="name">
-        Nombre
-      </label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.name}
-      />
-      {formik.errors.name ? <div>{formik.errors.name}</div> : null}
+        <div className={styles.doubleInputs}>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="name">
+              Nombre
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.name}
+            />
+            {formik.errors.name ? <div>{formik.errors.name}</div> : null}
+          </div>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="lastName">
+              Apellidos
+            </label>
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.lastName}
+            />
+            {formik.errors.lastName ? (
+              <div>{formik.errors.lastName}</div>
+            ) : null}
+          </div>
+        </div>
 
-      <label className={styles.formLabel} htmlFor="lastName">
-        Apellidos
-      </label>
-      <input
-        id="lastName"
-        name="lastName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.lastName}
-      />
-      {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+        <div className={styles.doubleInputs}>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="dni">
+              DNI/NIE
+            </label>
+            <input
+              id="dni"
+              name="dni"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.dni}
+            />
+            {formik.errors.dni ? <div>{formik.errors.dni}</div> : null}
+          </div>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="position">
+              Cargo
+            </label>
+            <input
+              id="position"
+              name="position"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.position}
+            />
+            {formik.errors.position ? (
+              <div>{formik.errors.position}</div>
+            ) : null}
+          </div>
+        </div>
 
-      <label className={styles.formLabel} htmlFor="dni">
-        DNI/NIE
-      </label>
-      <input
-        id="dni"
-        name="dni"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.dni}
-      />
-      {formik.errors.dni ? <div>{formik.errors.dni}</div> : null}
+        <div className={styles.doubleInputs}>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="phone">
+              Teléfono
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.phone}
+            />
+            {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
+          </div>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="email">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+          </div>
+        </div>
 
-      <label className={styles.formLabel} htmlFor="position">
-        Cargo
-      </label>
-      <input
-        id="position"
-        name="position"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.position}
-      />
-      {formik.errors.position ? <div>{formik.errors.position}</div> : null}
+        <div className={styles.doubleInputs}>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="location">
+              Localidad
+            </label>
+            <input
+              id="location"
+              name="location"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.location}
+            />
+            {formik.errors.location ? (
+              <div>{formik.errors.location}</div>
+            ) : null}
+          </div>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="salary">
+              Salario
+            </label>
+            <input
+              id="salary"
+              name="salary"
+              type="number"
+              onChange={formik.handleChange}
+              value={formik.values.salary}
+            />
+            {formik.errors.salary ? <div>{formik.errors.salary}</div> : null}
+          </div>
+        </div>
 
-      <label className={styles.formLabel} htmlFor="phone">
-        Teléfono
-      </label>
-      <input
-        id="phone"
-        name="phone"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.phone}
-      />
-      {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
-
-      <label className={styles.formLabel} htmlFor="email">
-        Email
-      </label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-
-      <label className={styles.formLabel} htmlFor="location">
-        Localidad
-      </label>
-      <input
-        id="location"
-        name="location"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.location}
-      />
-      {formik.errors.location ? <div>{formik.errors.location}</div> : null}
-
-      <label className={styles.formLabel} htmlFor="salary">
-        Salario
-      </label>
-      <input
-        id="salary"
-        name="salary"
-        type="number"
-        onChange={formik.handleChange}
-        value={formik.values.salary}
-      />
-      {formik.errors.salary ? <div>{formik.errors.salary}</div> : null}
-
-      <label className={styles.formLabel} htmlFor="joiningDate">
-        Fecha de Ingreso
-      </label>
-      <input
-        id="joiningDate"
-        name="joiningDate"
-        type="date"
-        onChange={formik.handleChange}
-        value={formik.values.joiningDate}
-      />
-      {formik.errors.joiningDate ? <div>{formik.errors.joiningDate}</div> : null}
-
-      <label className={styles.formLabel} htmlFor="birthDate">
-        Fecha de Nacimiento
-      </label>
-      <input
-        id="birthDate"
-        name="birthDate"
-        type="date"
-        onChange={formik.handleChange}
-        value={formik.values.birthDate}
-      />
-      {formik.errors.birthDate ? <div>{formik.errors.birthDate}</div> : null}
-
-      <button type="submit">Submit</button>
-    </form>
+        <div className={styles.doubleInputs}>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="joiningDate">
+              Fecha de Ingreso
+            </label>
+            <input
+              id="joiningDate"
+              name="joiningDate"
+              type="date"
+              onChange={formik.handleChange}
+              value={formik.values.joiningDate}
+            />
+            {formik.errors.joiningDate ? (
+              <div>{formik.errors.joiningDate}</div>
+            ) : null}
+          </div>
+          <div className={styles.labelInput}>
+            <label className={styles.formLabel} htmlFor="birthDate">
+              Fecha de Nacimiento
+            </label>
+            <input
+              id="birthDate"
+              name="birthDate"
+              type="date"
+              onChange={formik.handleChange}
+              value={formik.values.birthDate}
+            />
+            {formik.errors.birthDate ? (
+              <div>{formik.errors.birthDate}</div>
+            ) : null}
+          </div>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
 
