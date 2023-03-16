@@ -4,12 +4,15 @@
   margin: 0 30px;
   border-radius: 10px;
   box-sizing: border-box;
+  border-collapse: separate;
+  border-spacing: 0 1em;
 }
-.employeeTable img {
+
+/* .employeeTable img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-}
+} */
 
 .employeeTableContainer {
   padding: 150px 0px;

@@ -4,10 +4,10 @@ import { MdEdit, MdDeleteForever } from "react-icons/md";
 
 export default function EmployeeRow({ employee, deleteById }) {
   return (
-    <tr>
+    <tr className={styles.employeeRowContainer}>
       <td>{employee.id}</td>
-      <td>
-        <img
+      <td className={styles.tableImgContainer}>
+        <img className={styles.tableImg}
           src={employee.photo}
           alt={`Foto ${employee.name} ${employee.lastName}`}
         />

@@ -1,3 +1,21 @@
+.employeeRowContainer tr {
+  border: 2px solid white;
+}
+
+.tableImgContainer {
+  height: 100px;
+  width:100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tableImg {
+  
+  width: 110%;
+}
 .actionButton {
   cursor: pointer;
   font-size: 30px;
