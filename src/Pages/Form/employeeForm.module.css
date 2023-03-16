@@ -31,7 +31,7 @@
     background-color: #d6d6d6 ;
     z-index: 1000;
     border-radius: 10px;
-    gap:20px
+    gap:7px
         
 }
 
@@ -39,25 +39,22 @@
     display: flex;
     justify-content: space-between;
     width:100%;
+    position:relative;
 }
 
 .nonPhotoInputs {
+    padding: 20px 0px;
     display: grid;
     justify-content: center;
-    gap:20px;
+    gap:23px;
     grid-template-columns: repeat(auto-fill, 300px);
     width: 100%;
     
 }
-/* .doubleInputs {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-} */
 
 .imgContainer {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +81,7 @@
 .formInput {
     border-radius: 10px;
     border:none;
-    padding: 2px 5px;
+    padding: 2px 15px;
     background-color: #f5f5f5;
     width:70%;
 }
@@ -95,4 +92,16 @@
     padding: 5px 0;
     
 }
+
+.errorToast {
+    position:absolute;
+    font-size: x-small;
+    background-color: #fca1a1;
+    right: 0px;
+    top: -22px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    opacity: 0.7;
+}
+
 
