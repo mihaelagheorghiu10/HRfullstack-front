@@ -20,7 +20,7 @@ export default function EmployeeForm() {
     <div className={styles.formPageContainer}>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
         <div className={styles.imgColumn}>
-          <div className={styles.labelInput}>
+          
             <div className={styles.imgContainer}>
               <img
                 className={styles.employeeImg}
@@ -42,7 +42,7 @@ export default function EmployeeForm() {
               />
               {formik.errors.photo ? <div>{formik.errors.photo}</div> : null}
             </div>
-          </div>
+          
         </div>
 
         <div className={styles.doubleInputs}>
