@@ -18,6 +18,7 @@ export default function EmployeeForm() {
   })
   return (
     <div className={styles.formPageContainer}>
+      <div className={styles.darkBackground}></div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
         <div className={styles.imgColumn}>
           
