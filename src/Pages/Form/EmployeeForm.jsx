@@ -5,6 +5,7 @@ import defaultPhoto from "./Default.png";
 import { GiCancel } from "react-icons/gi";
 import employeeApiService from "../../apiServices/EmployeeApiService";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 
 
@@ -32,7 +33,7 @@ export default function EmployeeForm() {
       <div className={styles.darkBackground}></div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
         <div className={styles.cancelButton}>
-          <GiCancel/>
+          <Link to={'/'}><GiCancel/></Link>
         </div>
         <div className={styles.imgColumn}>
           <div className={styles.imgContainer}>

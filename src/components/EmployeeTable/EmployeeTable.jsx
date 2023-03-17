@@ -3,6 +3,7 @@ import styles from "./employeeTable.module.css";
 import employeeApiService from "../../apiServices/EmployeeApiService";
 import EmployeeRow from "../EmployeeRow/EmployeeRow";
 import { BsPersonFillAdd } from "react-icons/bs";
+import { Link } from "react-router-dom";
 //import { Employee } from "../Employee/Employee";
 
 export default function EmployeeTable() {
@@ -24,7 +25,7 @@ export default function EmployeeTable() {
       <div className={styles.employeeTableContainer}>
         <div className={styles.employeeHeadContainer}>
           {/* <h3 h3 className={styles.employeeIdHead}>Id</h3> */}
-          <h3 className={styles.employeeAddBtn}><BsPersonFillAdd/></h3>
+          <h3 className={styles.employeeAddBtn}><Link to={'/employees/form/'}><BsPersonFillAdd/></Link></h3>
           <h3 className={styles.employeeNameHead}>Nombre</h3>
           <h3 className={styles.employeePositionHead}>Cargo</h3>
           <h3 className={styles.employeePhoneHead}>Teléfono</h3>
