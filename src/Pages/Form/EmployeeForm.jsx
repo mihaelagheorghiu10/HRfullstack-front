@@ -246,9 +246,10 @@ const validate = (values) => {
   if (!values.photo) {
     // Para cambiar
     errors.photo = "Campo requerido";
-  } else if (values.photo.length > 15) {
-    errors.photo = "Must be 15 characters or less";
-  }
+   } 
+  //else if (values.photo.length > 15) {
+  //   errors.photo = "Must be 15 characters or less";
+  // }
 
   if (!values.name) {
     errors.firstName = "Campo requerido";
