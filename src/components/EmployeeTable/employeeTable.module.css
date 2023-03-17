@@ -1,11 +1,7 @@
-/* .employeeListContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height:100vh;
-  padding-top: 85px;
-} */
+.employeeListContainer {
+  background-color: azure;
+}
+
 .employeeTableContainer {
   position:fixed;
   top:55%;
@@ -46,32 +42,21 @@
   width: 80px !important;
 }
 
-/* .employeeBirthDateHead {
-  width: 140px !important;
-  font-size: 16px;
-} */
-/* .employeeTable {
-  padding: 30px 0px;
-  background-color: #d9d9d9;
-  margin: 0 30px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  border-collapse: separate;
-  border-spacing: 0 1em;
-  column-gap: 40px;
-  width:90vw;
-} */
+::-webkit-scrollbar {
+  
+  height: 10px;
+}
 
-/* .employeeTable img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-} */
-/* 
-.employeeTableContainer {
-  padding: 150px 0px;
-  padding-bottom: 0;
-  overflow-x: scroll;
-  box-sizing: border-box;
-  width: 100%;
-} */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: rgb(134, 134, 134); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(104, 104, 104);; 
+}

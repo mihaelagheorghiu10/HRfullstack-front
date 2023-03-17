@@ -1,6 +1,4 @@
 .employeeRowContainer  {
-  /* background-color: red; */
-  
   padding: 5px 0px 5px 15px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -44,9 +42,19 @@
 }
 
 .editButton {
-  color: #55b6ff;
+  color: #285a80;
+}
+
+.editButton:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .deleteButton {
   color: tomato;
+}
+
+.deleteButton:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }

@@ -13,10 +13,10 @@ export default function EmployeeTable() {
     });
   }, []);
 
-  const deleteById = (i => {
-    employeeApiNamervice.deleteById(id);
+  const deleteById = (id) => {
+    employeeApiService.deleteById(id);
     setEmployeeTable(employeeTable.filter((employee) => employee.id !== id));
-  });
+  };
 
   return (
     <div className={styles.employeeListContainer}>
