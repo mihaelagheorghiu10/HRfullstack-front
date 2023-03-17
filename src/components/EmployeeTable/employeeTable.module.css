@@ -11,7 +11,7 @@
   justify-content: start;
   flex-direction: column;
   align-items: baseline;
-  background-color:  #d9d9d9;
+  background-color:  #d6ccd8;
   overflow-x: scroll;
   width: 90vw;
   max-width: 1400px;
@@ -53,10 +53,10 @@
 }
  
 ::-webkit-scrollbar-thumb {
-  background: rgb(134, 134, 134); 
+  background:  #9474ad;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(104, 104, 104);; 
+  background:  #6c547e
 }
