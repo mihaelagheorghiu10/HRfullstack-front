@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import EmployeeList from './components/EmployeeList/EmployeeList';
+import EmployeeTable from './components/EmployeeTable/EmployeeTable';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import EmployeeForm from './Pages/Form/EmployeeForm';
 
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path='/' element={<EmployeeList/>}></Route>
+        <Route path='/' element={<EmployeeTable/>}></Route>
         <Route path='employees/form/' element={<EmployeeForm/>}></Route>
         
       </Routes>
