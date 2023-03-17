@@ -3,8 +3,14 @@ import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./employeeForm.module.css";
 import defaultPhoto from "./Default.png";
 import { GiCancel } from "react-icons/gi";
+import employeeApiService from "../../apiServices/EmployeeApiService";
+import { useNavigate } from "react-router";
+
+
 
 export default function EmployeeForm() {
+
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -14,7 +20,11 @@ export default function EmployeeForm() {
     validate,
     onSubmit: (values) => {
       // Aqui se cambia la funcion para crear o editar
-      alert(JSON.stringify(values, null, 2));
+      //alert(JSON.stringify(values, null, 2));
+      console.log(JSON.stringify(values));
+      employeeApiService.create(values);
+      navigate("/");
+      
     },
   });
   return (
