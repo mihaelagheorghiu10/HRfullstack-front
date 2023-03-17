@@ -14,8 +14,7 @@ function App() {
         <Route path='employees/form/' element={<EmployeeForm/>}></Route>
         
       </Routes>
-    </div>
-    
+    </div>    
   );
 }
 export default App
