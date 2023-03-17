@@ -1,0 +1,114 @@
+.formPageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.cancelButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    color: #333333
+}
+.darkBackground {
+    background-color: black ;
+    opacity: 0.3;
+    position: fixed;
+    z-index: 500;
+    top:0px;
+    bottom: 0px;
+    width: 100vw;
+}
+.formPage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 250px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width:75vw;
+    height: 300px;
+    max-width: 750px;
+    /* max-height: 500px; */
+    background-color: #d6d6d6 ;
+    z-index: 1000;
+    border-radius: 10px;
+    gap:7px
+        
+}
+
+.labelInput{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    position:relative;
+}
+
+.nonPhotoInputs {
+    padding: 20px 0px;
+    display: grid;
+    justify-content: center;
+    gap:23px;
+    grid-template-columns: repeat(auto-fill, 300px);
+    width: 100%;
+    
+}
+
+.imgContainer {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.employeeImg {
+    width: 100%;
+}
+
+.imgColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.formLabel {
+    padding: 2px 10px;
+    width:30%;
+}
+
+.formInput {
+    border-radius: 10px;
+    border:none;
+    padding: 2px 15px;
+    background-color: #f5f5f5;
+    width:70%;
+}
+.submitButton {
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 0;
+    
+}
+
+.errorToast {
+    position:absolute;
+    font-size: x-small;
+    background-color: #fca1a1;
+    right: 0px;
+    top: -22px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    opacity: 0.7;
+}
+
+

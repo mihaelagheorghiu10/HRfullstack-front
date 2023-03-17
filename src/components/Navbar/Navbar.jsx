@@ -17,6 +17,7 @@ export default function Navbar() {
         <GiHamburgerMenu className={styles.hamburgerIcon} />
       </div>
     </div>
+    
     //</NavbarDiv>
   )
 }
