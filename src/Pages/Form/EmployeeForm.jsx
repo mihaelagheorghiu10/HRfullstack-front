@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 
 
-export default function EmployeeForm() {
+export default function EmployeeForm({hideFormButton}) {
 
   const navigate = useNavigate();
   const formik = useFormik({
@@ -32,9 +32,7 @@ export default function EmployeeForm() {
     <div className={styles.formPageContainer}>
       <div className={styles.darkBackground}></div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
-        <div className={styles.cancelButton}>
-          <Link to={'/'}><GiCancel/></Link>
-        </div>
+        <div className={styles.cancelButton}><GiCancel className={styles.hideFormButton} onClick={()=>hideFormButton()}/></div>
         <div className={styles.imgColumn}>
           <div className={styles.imgContainer}>
             <img
@@ -44,7 +42,7 @@ export default function EmployeeForm() {
               srcset=""
             />
           </div>
-          <div className={styles.labelInput}>
+          <div className={styles.labelInputPhoto}>
             <label className={styles.formLabel} htmlFor="photo">
               Foto
             </label>

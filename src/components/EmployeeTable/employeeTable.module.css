@@ -44,6 +44,11 @@
   width: 70px !important;
 }
 
+.employeeIdHead svg {
+  font-size: 35px !important;
+  color: #992b9c;
+}
+
 .employeeEmailHead {
   width: 200px !important;
 }
@@ -56,10 +61,15 @@
   width: 80px !important;
   }
 
- .employeeAddBtn svg {
+  .showFormButton:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+ /* .employeeAddBtn svg {
   font-size: 35px !important;
   color: #992b9c;
-} 
+}  */
 
 .employeeAddBtn svg:hover {
     
