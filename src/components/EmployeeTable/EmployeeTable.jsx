@@ -46,33 +46,7 @@ export default function EmployeeTable() {
             />
           ))}
         </div>
-      {/* <table className={styles.employeeTable}>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th></th>
-            <th>Nombre</th>
-            <th>Cargo</th>
-            <th>Teléfono</th>
-            <th>Email</th>
-            <th>Localidad</th>
-            <th>Salario</th>
-            <th>DNI</th>
-            <th>Incorporación</th>
-            <th>Fecha Nacimiento</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employeeTable.map((employee, index) => (
-            <EmployeeRow
-              employee={employee}
-              deleteById={deleteById}
-              key={index}
-            />
-          ))}
-        </tbody>
-      </table> */}
+     
     </div>
   );
 }
