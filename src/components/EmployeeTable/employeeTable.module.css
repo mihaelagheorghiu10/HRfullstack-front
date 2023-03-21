@@ -37,6 +37,7 @@
 .employeeHeadContainer h3 {
   font-size: 1.2em;
   width: 120px;
+  
 }
 
 .employeeAddBtn {
@@ -71,4 +72,5 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background:  #6c547e
+  
 }
