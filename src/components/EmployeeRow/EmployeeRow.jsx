@@ -5,7 +5,7 @@ import { MdEdit, MdDeleteForever } from "react-icons/md";
 export default function EmployeeRow({ employee, deleteById }) {
   return (
     <div className={styles.employeeRowContainer}>
-      {/* <p className= {styles.employeeId}>{employee.id}</p> */}
+      <p className= {styles.employeeId}>{employee.id}</p>
       <div className={styles.tableImgContainer}>
         <img
           className={styles.tableImg}

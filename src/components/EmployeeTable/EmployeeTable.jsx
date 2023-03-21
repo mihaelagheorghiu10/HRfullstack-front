@@ -4,11 +4,13 @@ import employeeApiService from "../../apiServices/EmployeeApiService";
 import EmployeeRow from "../EmployeeRow/EmployeeRow";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import EmployeeForm from "../../Pages/Form/EmployeeForm";
 //import { Employee } from "../Employee/Employee";
 import EmployeeContext from "../../context/EmployeeContext";
 
 export default function EmployeeTable() {
   const [employeeTable, setEmployeeTable] = useState([]);
+  const [formIsVisible, setFormIsVisible] = useState(false);
 
   const userData = {
     id: 1,
@@ -36,13 +38,22 @@ export default function EmployeeTable() {
     setEmployeeTable(employeeTable.filter((employee) => employee.id !== id));
   };
 
+  const showFormButton = () => {
+    setFormIsVisible(true);
+  }
+
+  const hideFormButton = () => {
+    setFormIsVisible(false);
+  }
+
   return (
     <EmployeeContext.Provider value={userData}>
     <div className={styles.employeeListContainer}>
+      { formIsVisible ? <EmployeeForm hideFormButton = {hideFormButton}/> : null}
       <div className={styles.employeeTableContainer}>
         <div className={styles.employeeHeadContainer}>
-          {/* <h3 h3 className={styles.employeeIdHead}>Id</h3> */}
-          <h3 className={styles.employeeAddBtn}><Link to={'/employees/form/'}><BsPersonFillAdd/></Link></h3>
+          <h3 h3 className={styles.employeeIdHead}><BsPersonFillAdd className= {styles.showFormButton} onClick={()=>showFormButton()}/></h3>
+          <h3 className={styles.employeeAddBtn}></h3>
           <h3 className={styles.employeeNameHead}>Nombre</h3>
           <h3 className={styles.employeePositionHead}>Cargo</h3>
           <h3 className={styles.employeePhoneHead}>Teléfono</h3>
