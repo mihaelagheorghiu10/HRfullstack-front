@@ -24,7 +24,7 @@ export default function EmployeeTable() {
     <div className={styles.employeeListContainer}>
       <div className={styles.employeeTableContainer}>
         <div className={styles.employeeHeadContainer}>
-          {/* <h3 h3 className={styles.employeeIdHead}>Id</h3> */}
+          <h3 h3 className={styles.employeeIdHead}>Id</h3>
           <h3 className={styles.employeeAddBtn}><Link to={'/employees/form/'}><BsPersonFillAdd/></Link></h3>
           <h3 className={styles.employeeNameHead}>Nombre</h3>
           <h3 className={styles.employeePositionHead}>Cargo</h3>

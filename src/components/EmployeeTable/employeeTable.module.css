@@ -40,6 +40,18 @@
   
 }
 
+.employeeIdHead {
+  width: 70px !important;
+}
+
+.employeeEmailHead {
+  width: 200px !important;
+}
+
+.employeeLocationHead {
+  width: 180px !important;
+}
+
 .employeeAddBtn {
   width: 80px !important;
   }
