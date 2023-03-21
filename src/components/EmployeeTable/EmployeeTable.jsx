@@ -5,9 +5,25 @@ import EmployeeRow from "../EmployeeRow/EmployeeRow";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { Link } from "react-router-dom";
 //import { Employee } from "../Employee/Employee";
+import EmployeeContext from "../../context/EmployeeContext";
 
 export default function EmployeeTable() {
   const [employeeTable, setEmployeeTable] = useState([]);
+
+  const userData = {
+    id: 1,
+    name: "hola",
+    lastName: "bola",
+    photo: "esta",
+    position: "hola",
+    phone: "141234",
+    email: "nu132412ll",
+    location: "3ggdfa",
+    salary: 1232131,
+    joiningDate: "asdf123",
+    birthDate: "nul123l",
+    dni: "null",
+  };
 
   useEffect(() => {
     employeeApiService.getAll().then((data) => {
@@ -21,6 +37,7 @@ export default function EmployeeTable() {
   };
 
   return (
+    <EmployeeContext.Provider value={userData}>
     <div className={styles.employeeListContainer}>
       <div className={styles.employeeTableContainer}>
         <div className={styles.employeeHeadContainer}>
@@ -48,5 +65,6 @@ export default function EmployeeTable() {
         </div>
      
     </div>
+    </EmployeeContext.Provider>
   );
 }
