@@ -41,11 +41,13 @@ export default function EmployeeTable() {
   };
 
   const showFormButton = () => {
+    // setIsEditMode(false);
     setFormIsVisible(true);
   }
 
   const hideFormButton = () => {
     setFormIsVisible(false);
+    setIsEditMode(false);
   }
 
   const editByIndex = (index) => {
@@ -58,7 +60,7 @@ export default function EmployeeTable() {
   }
 
   return (
-    <EmployeeContext.Provider value = {employeeTable[indexToEdit]}>
+    <EmployeeContext.Provider value = {isEditMode? employeeTable[indexToEdit] : []}>
     <div className={styles.employeeListContainer}>
       { formIsVisible ? <EmployeeForm isEditMode = {isEditMode} indexToEdit = {indexToEdit} hideFormButton = {hideFormButton}/> : null}
       <div className={styles.employeeTableContainer}>

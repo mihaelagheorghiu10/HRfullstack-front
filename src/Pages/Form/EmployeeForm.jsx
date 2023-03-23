@@ -72,7 +72,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
               name="photo"
               type="text"
               onChange={formik.handleChange}
-              value= {formik.values.photo}
+              value= {isEditMode? formik.values.photo : ""}
               
             />
             {formik.errors.photo ? (
