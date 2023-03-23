@@ -220,7 +220,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
 
         <div className={styles.labelInput}>
           <label className={styles.formLabel} htmlFor="joiningDate">
-            Fecha de Ingreso
+            Incorporación
           </label>
           <input
             className={styles.formInput}
@@ -236,7 +236,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
         </div>
         <div className={styles.labelInput}>
           <label className={styles.formLabel} htmlFor="birthDate">
-            Fecha de Nacimiento
+            Nacimiento
           </label>
           <input
             className={styles.formInput}

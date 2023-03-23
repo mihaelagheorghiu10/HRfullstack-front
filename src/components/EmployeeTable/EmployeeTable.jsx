@@ -56,7 +56,7 @@ export default function EmployeeTable() {
     showFormButton();
     console.log(employeeTable);
     console.log(index);
-    
+    console.log(new Date("1987-07-04T22:00:00.000+00:00").toLocaleDateString())
   }
 
   return (
