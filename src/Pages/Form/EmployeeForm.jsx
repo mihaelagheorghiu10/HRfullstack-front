@@ -42,7 +42,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
       <div className={styles.darkBackground}></div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
         <div className={styles.cancelButton}><GiCancel className={styles.hideFormButton} onClick={()=>hideFormButton()}/></div>
-        <h3>{isEditMode? "Editar Trabajador" : "Crear Trabajador"}</h3>
+        <h3>{isEditMode? "Editar Trabajador" : "Crear Nuevo Trabajador"}</h3>
         <div className={styles.imgColumn}>
           <div className={styles.imgContainer}>
             <img
@@ -240,7 +240,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
 
         
         <button className={styles.submitButton} type="submit">
-          Enviar
+          {isEditMode? "Editar" : "Crear"}
         </button>
       </form>
     </div>

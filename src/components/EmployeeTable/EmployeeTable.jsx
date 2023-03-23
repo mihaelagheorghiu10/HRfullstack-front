@@ -52,10 +52,13 @@ export default function EmployeeTable() {
     setIsEditMode(true);
     setIndexToEdit(index);
     showFormButton();
+    console.log(employeeTable);
+    console.log(index);
+    
   }
 
   return (
-    
+    <EmployeeContext.Provider value = {employeeTable[indexToEdit]}>
     <div className={styles.employeeListContainer}>
       { formIsVisible ? <EmployeeForm isEditMode = {isEditMode} indexToEdit = {indexToEdit} hideFormButton = {hideFormButton}/> : null}
       <div className={styles.employeeTableContainer}>
@@ -79,6 +82,7 @@ export default function EmployeeTable() {
               employee={employee}
               deleteById={deleteById}
               key={index}
+              index = {index}
               indexToEdit = {indexToEdit}
               editByIndex = {editByIndex}
             />
@@ -86,6 +90,6 @@ export default function EmployeeTable() {
         </div>
      
     </div>
-    
+    </EmployeeContext.Provider>
   );
 }
