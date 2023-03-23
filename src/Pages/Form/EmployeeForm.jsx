@@ -30,8 +30,9 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
       email: isEditMode? userToEdit.email : "" ,
       location: isEditMode? userToEdit.location : "" ,
       salary: isEditMode? userToEdit.salary : "" ,
-      joiningDate: isEditMode? new Date(userToEdit.joiningDate) : "" ,
-      birthDate: isEditMode? newDate(userToEdit.birthDate) : "" 
+      joiningDate: isEditMode? new Date(userToEdit.joiningDate).toLocaleTimeString("es-ES") : "" ,
+      birthDate: isEditMode? new Date(userToEdit.birthDate).toLocaleTimeString("es-ES") : "",
+      dni: isEditMode? userToEdit.dni : ""  
 
 
     },
