@@ -1,4 +1,4 @@
-import {React, useContext } from "react";
+import { React, useContext } from "react";
 import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./employeeForm.module.css";
 import defaultPhoto from "./Default.png";
@@ -14,17 +14,26 @@ import EmployeeContext from "../../context/EmployeeContext"
 export default function EmployeeForm({hideFormButton, isEditMode}) {
 
   const { id, name, lastName, photo, position, phone, email, location, salary, joiningDate, birthDate, dni  } = useContext(EmployeeContext);
-  const example = useContext(EmployeeContext);
-  console.log(example)
+  const userToEdit = useContext(EmployeeContext);
+  console.log(userToEdit)
   // console.log(example.findIndex(person=> person.id == 18));
   
 
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      name: "",
-      lastName: "",
-      email: "",
+      photo: isEditMode? userToEdit.photo : defaultPhoto ,
+      name: isEditMode? userToEdit.name : "" ,
+      lastName: isEditMode? userToEdit.lastName : "" ,
+      position: isEditMode? userToEdit.position : "",
+      phone: isEditMode? userToEdit.phone : "" ,
+      email: isEditMode? userToEdit.email : "" ,
+      location: isEditMode? userToEdit.location : "" ,
+      salary: isEditMode? userToEdit.salary : "" ,
+      joiningDate: isEditMode? new Date(userToEdit.joiningDate) : "" ,
+      birthDate: isEditMode? newDate(userToEdit.birthDate) : "" 
+
+
     },
     validate,
     onSubmit: (values) => {
@@ -47,7 +56,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
           <div className={styles.imgContainer}>
             <img
               className={styles.employeeImg}
-              src={defaultPhoto}
+              src={formik.values.photo}
               alt=""
               srcset=""
             />
@@ -62,7 +71,8 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
               name="photo"
               type="text"
               onChange={formik.handleChange}
-              value={formik.values.photo}
+              value= {formik.values.photo}
+              
             />
             {formik.errors.photo ? (
               <div className={styles.errorToast}>{formik.errors.photo}</div>
@@ -82,6 +92,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
               type="text"
               onChange={formik.handleChange}
               value={formik.values.name}
+              
             />
             {formik.errors.name ? (
               <div className={styles.errorToast}>{formik.errors.name}</div>
@@ -99,6 +110,7 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
               type="text"
               onChange={formik.handleChange}
               value={formik.values.lastName}
+              
             />
             {formik.errors.lastName ? (
               <div className={styles.errorToast}>{formik.errors.lastName}</div>
