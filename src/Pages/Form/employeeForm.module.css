@@ -56,6 +56,27 @@
     position:relative;
 }
 
+.labelInputSelector{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    padding: 10px 0 3px 0;
+    
+}
+.formLabelSelector {
+    padding: 2px 10px;
+    
+}
+.departmentSelector {
+    border-radius: 10px;
+    border:none;
+    padding: 2px 5px;
+    background-color: #f5f5f5;
+    
+}
+
 /* .labelInputPhoto{
     display: flex;
     justify-content: space-between;

@@ -7,12 +7,14 @@ import { Link } from "react-router-dom";
 import EmployeeForm from "../../Pages/Form/EmployeeForm";
 //import { Employee } from "../Employee/Employee";
 import EmployeeContext from "../../context/EmployeeContext";
+import departmentApiService from "../../apiServices/DepartmentApiService";
 
 export default function EmployeeTable() {
   const [employeeTable, setEmployeeTable] = useState([]);
   const [formIsVisible, setFormIsVisible] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [indexToEdit, setIndexToEdit] = useState(null);
+  const [departmentsList, setDepartmentsList] = useState([]);
 
   const userData = {
     id: 1,
@@ -33,6 +35,9 @@ export default function EmployeeTable() {
     employeeApiService.getAll().then((data) => {
       setEmployeeTable(data);
     });
+    departmentApiService.getAll().then((data) => {
+      setDepartmentsList(data)
+    })
   }, []);
 
   const deleteById = (id) => {
@@ -57,12 +62,13 @@ export default function EmployeeTable() {
     console.log(employeeTable);
     console.log(index);
     console.log(new Date("1987-07-04T22:00:00.000+00:00").toISOString())
+    console.log(departmentsList);
   }
 
   return (
     <EmployeeContext.Provider value = {isEditMode? employeeTable[indexToEdit] : []}>
     <div className={styles.employeeListContainer}>
-      { formIsVisible ? <EmployeeForm isEditMode = {isEditMode} indexToEdit = {indexToEdit} hideFormButton = {hideFormButton}/> : null}
+      { formIsVisible ? <EmployeeForm departmentsList = {departmentsList} isEditMode = {isEditMode} indexToEdit = {indexToEdit} hideFormButton = {hideFormButton}/> : null}
       <div className={styles.employeeTableContainer}>
         <div className={styles.employeeHeadContainer}>
           <h3 h3 className={styles.employeeIdHead}><BsPersonFillAdd className= {styles.showFormButton} onClick={()=>showFormButton()}/></h3>
