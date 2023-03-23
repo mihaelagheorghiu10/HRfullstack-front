@@ -6,10 +6,50 @@ import { GiCancel } from "react-icons/gi";
 import employeeApiService from "../../apiServices/EmployeeApiService";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import * as Yup from 'yup';
 
 
 
 export default function EmployeeForm() {
+
+  let userSchema = Yup.object().shape({
+    photo: Yup.string()
+      .url("Debe ser una URL válida"),
+    name: Yup.string()
+      .required("Campo obligatorio")
+      .max(30, "El número maximo de caracteres es 30"),
+    lastName: Yup.string()
+      .required("Campo obligatorio")
+      .max(30, "El número maximo de caracteres es 30"),
+    dni: Yup.string()
+      .length(9, "No es un DNI/NIE válido")
+      .required("Campo obligatorio"),
+    position: Yup.string()
+      .max(90, "El número maximo de caracteres es 90")
+      .required("Campo obligatorio"),
+    phone: Yup.string()
+    .max(15, "El número maximo no debe exceder 15 dígitos")      
+      .required("Campo obligatorio"),
+    email: Yup.string()
+      .email("No es un email válido")
+      .required("Campo obligatorio"),
+    location: Yup.string()
+      .min(2, "Nombre de localidad demasiado corto")
+      .max(50, "Nombre de localidad demasiado largo")
+      .required("Campo obligatorio"),
+    salary: Yup.number().test(
+      'Es positivo?', 
+      'El número debe ser mayor a 0', 
+      (value) => value > 0)
+      .required("Campo obligatorio"),
+    joiningDate: Yup.date()
+      .max(new Date(), "La fecha no puede ser posterior a hoy")
+      .required("Campo obligatorio"),
+    // birthDate: Yup.date()
+    // .test("Es menor de 16?", "La edad mínima es de 16 años", function (value) {
+    //   return Date().prototype.differenceInYears(new Date(), new Date(value)) <= 16;})
+    //   .required("Campo obligatorio")
+  });
 
   const navigate = useNavigate();
   const formik = useFormik({
@@ -18,7 +58,7 @@ export default function EmployeeForm() {
       lastName: "",
       email: "",
     },
-    validate,
+    validationSchema : userSchema,
     onSubmit: (values) => {
       // Aqui se cambia la funcion para crear o editar
       //alert(JSON.stringify(values, null, 2));
@@ -314,3 +354,4 @@ const validate = (values) => {
 
   return errors;
 };
+
