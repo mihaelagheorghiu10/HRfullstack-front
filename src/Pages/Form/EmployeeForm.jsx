@@ -41,7 +41,8 @@ export default function EmployeeForm({hideFormButton, isEditMode}) {
       // Aqui se cambia la funcion para crear o editar
       //alert(JSON.stringify(values, null, 2));
       console.log(JSON.stringify(values));
-      employeeApiService.create(values);
+      isEditMode? console.log(userToEdit.id) : null;
+      isEditMode? employeeApiService.editById(userToEdit.id, values) : employeeApiService.create(values);
       navigate("/");
       
     },
