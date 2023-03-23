@@ -45,10 +45,13 @@ export default function EmployeeForm() {
     joiningDate: Yup.date()
       .max(new Date(), "La fecha no puede ser posterior a hoy")
       .required("Campo obligatorio"),
-    // birthDate: Yup.date()
-    // .test("Es menor de 16?", "La edad mínima es de 16 años", function (value) {
-    //   return Date().prototype.differenceInYears(new Date(), new Date(value)) <= 16;})
-    //   .required("Campo obligatorio")
+    birthDate: Yup.date()
+      .max(new Date(), "La fecha no puede ser posterior a hoy")
+      .test("Es menor de 16?", "La edad mínima es de 16 años", function (value) {
+
+        return differenceInYears(new Date(), new Date(value)) >= 16;
+      })      
+      .required("Campo obligatorio")
   });
 
   const navigate = useNavigate();
@@ -354,4 +357,13 @@ const validate = (values) => {
 
   return errors;
 };
+
+// BirthDate Validation
+const differenceInYears = (now, birthdate) => {
+
+  const ONE_DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
+  const diffDays = Math.round(Math.abs((now.getTime() - birthdate.getTime()) / (ONE_DAY_IN_MILLIS)));
+  const diffYears = Math.ceil(diffDays / 366);
+  return diffYears;
+}
 
