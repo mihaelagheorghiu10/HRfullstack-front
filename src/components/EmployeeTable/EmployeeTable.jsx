@@ -11,6 +11,8 @@ import EmployeeContext from "../../context/EmployeeContext";
 export default function EmployeeTable() {
   const [employeeTable, setEmployeeTable] = useState([]);
   const [formIsVisible, setFormIsVisible] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [indexToEdit, setIndexToEdit] = useState(null);
 
   const userData = {
     id: 1,
@@ -46,10 +48,16 @@ export default function EmployeeTable() {
     setFormIsVisible(false);
   }
 
+  const editByIndex = (index) => {
+    setIsEditMode(true);
+    setIndexToEdit(index);
+    showFormButton();
+  }
+
   return (
-    <EmployeeContext.Provider value={userData}>
+    
     <div className={styles.employeeListContainer}>
-      { formIsVisible ? <EmployeeForm hideFormButton = {hideFormButton}/> : null}
+      { formIsVisible ? <EmployeeForm isEditMode = {isEditMode} indexToEdit = {indexToEdit} hideFormButton = {hideFormButton}/> : null}
       <div className={styles.employeeTableContainer}>
         <div className={styles.employeeHeadContainer}>
           <h3 h3 className={styles.employeeIdHead}><BsPersonFillAdd className= {styles.showFormButton} onClick={()=>showFormButton()}/></h3>
@@ -66,16 +74,18 @@ export default function EmployeeTable() {
           <h3 className={styles.employeeActionsHead}>Acciones</h3>
         </div>
         
-        {employeeTable.map((employee, index,) => (
+        {employeeTable.map((employee, index) => (
             <EmployeeRow
               employee={employee}
               deleteById={deleteById}
               key={index}
+              indexToEdit = {indexToEdit}
+              editByIndex = {editByIndex}
             />
           ))}
         </div>
      
     </div>
-    </EmployeeContext.Provider>
+    
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useContext } from "react";
 import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./employeeForm.module.css";
 import defaultPhoto from "./Default.png";
@@ -6,10 +6,18 @@ import { GiCancel } from "react-icons/gi";
 import employeeApiService from "../../apiServices/EmployeeApiService";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+// import { useContext } from "react";
+import EmployeeContext from "../../context/EmployeeContext"
 
 
 
-export default function EmployeeForm({hideFormButton}) {
+export default function EmployeeForm({hideFormButton, isEditMode}) {
+
+  const { id, name, lastName, photo, position, phone, email, location, salary, joiningDate, birthDate, dni  } = useContext(EmployeeContext);
+  const example = useContext(EmployeeContext);
+  console.log(example)
+  // console.log(example.findIndex(person=> person.id == 18));
+  
 
   const navigate = useNavigate();
   const formik = useFormik({
@@ -30,9 +38,11 @@ export default function EmployeeForm({hideFormButton}) {
   });
   return (
     <div className={styles.formPageContainer}>
+      
       <div className={styles.darkBackground}></div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
         <div className={styles.cancelButton}><GiCancel className={styles.hideFormButton} onClick={()=>hideFormButton()}/></div>
+        <h3>{isEditMode? "Editar Trabajador" : "Crear Trabajador"}</h3>
         <div className={styles.imgColumn}>
           <div className={styles.imgContainer}>
             <img
