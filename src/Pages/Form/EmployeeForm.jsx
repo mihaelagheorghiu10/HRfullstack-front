@@ -241,7 +241,7 @@ export default function EmployeeForm() {
 
         <div className={styles.labelInput}>
           <label className={styles.formLabel} htmlFor="joiningDate">
-            Fecha de Ingreso
+            Incorporación
           </label>
           <input
             className={styles.formInput}
@@ -257,7 +257,7 @@ export default function EmployeeForm() {
         </div>
         <div className={styles.labelInput}>
           <label className={styles.formLabel} htmlFor="birthDate">
-            Fecha de Nacimiento
+            Nacimiento
           </label>
           <input
             className={styles.formInput}
