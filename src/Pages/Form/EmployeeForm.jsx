@@ -175,7 +175,6 @@ export default function EmployeeForm({
               <div className={styles.errorToast}>{formik.errors.name}</div>
             ) : null}
           </div>
-
           <div className={styles.labelInput}>
             <label className={styles.formLabel} htmlFor="lastName">
               Apellidos
