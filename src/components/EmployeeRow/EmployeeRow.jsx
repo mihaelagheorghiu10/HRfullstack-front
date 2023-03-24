@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./employeeRow.module.css";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
 
-export default function EmployeeRow({ employee, deleteById }) {
+export default function EmployeeRow({ employee, deleteById, index, editByIndex }) {
   return (
     <div className={styles.employeeRowContainer}>
-      {/* <p className= {styles.employeeId}>{employee.id}</p> */}
+      <p className= {styles.employeeId}>{employee.id}</p>
       <div className={styles.tableImgContainer}>
         <img
           className={styles.tableImg}
@@ -29,7 +29,7 @@ export default function EmployeeRow({ employee, deleteById }) {
         {new Date(employee.birthDate).toLocaleDateString("es-ES")}
       </p>
       <div className={styles.employeeButtons}>
-        <MdEdit className={`${styles.actionButton} ${styles.editButton}`} />
+        <MdEdit onClick = {() => editByIndex(index)} className={`${styles.actionButton} ${styles.editButton}`} />
         <MdDeleteForever
           className={`${styles.actionButton} ${styles.deleteButton}`}
           onClick={() => deleteById(employee.id)}

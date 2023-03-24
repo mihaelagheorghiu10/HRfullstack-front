@@ -24,7 +24,8 @@ const employeeApiService = {
   editById(id, changes) {
     return axios
       .put(baseUrl + `/${id}`, changes)
-      .then((response) => response.data);
+      .then((response) => response.data)
+      .catch((err) => console.log(err.message));
   },
   deleteById(id) {
     return axios.delete(baseUrl + `/${id}`).then((response) => response.data);

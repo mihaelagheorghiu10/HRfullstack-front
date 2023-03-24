@@ -22,7 +22,15 @@
 }
 
 .employeeId {
-  padding-left: 15px;
+  width: 70px !important;
+}
+
+.employeeEmail {
+  width: 200px !important;
+}
+
+.employeeLocation {
+  width: 180px !important;
 }
 
 .tableImgContainer {
