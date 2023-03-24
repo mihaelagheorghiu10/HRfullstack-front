@@ -29,7 +29,7 @@ export default function EmployeeForm({
     dni,
   } = useContext(EmployeeContext);
   const userToEdit = useContext(EmployeeContext);
-  console.log(userToEdit);
+  // console.log(userToEdit);
   // console.log(example.findIndex(person=> person.id == 18));
 
   const navigate = useNavigate();
@@ -43,26 +43,30 @@ export default function EmployeeForm({
       email: isEditMode ? userToEdit.email : "",
       location: isEditMode ? userToEdit.location : "",
       salary: isEditMode ? userToEdit.salary : "",
-      joiningDate: isEditMode
-        ? new Date(userToEdit.joiningDate).toLocaleTimeString("es-ES")
-        : "",
-      birthDate: isEditMode
-        ? new Date(userToEdit.birthDate).toLocaleTimeString("es-ES")
-        : "",
+      joiningDate: isEditMode ? new Date(userToEdit.joiningDate) : "",
+      birthDate: isEditMode ? new Date(userToEdit.birthDate) : "",
       dni: isEditMode ? userToEdit.dni : "",
     },
     validate,
     onSubmit: (values) => {
       // Aqui se cambia la funcion para crear o editar
       //alert(JSON.stringify(values, null, 2));
-      console.log(JSON.stringify(values));
-      isEditMode ? console.log(userToEdit.id) : null;
+      // console.log(`is edit mode? ${isEditMode}`);
+      // console.log(JSON.stringify(values));
+      // if (isEditMode) console.log(`id: ${userToEdit.id}`);
+
       isEditMode
         ? employeeApiService.editById(userToEdit.id, values)
         : employeeApiService.create(values); //Verificar funcionamiento!
+      hideFormButton();
       navigate("/");
     },
   });
+
+  // console.log(
+  //   `initial values from useContext: ${JSON.stringify(formik.initialValues)}`
+  // );
+
   return (
     <div className={styles.formPageContainer}>
       <div className={styles.darkBackground}></div>
