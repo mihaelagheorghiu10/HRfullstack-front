@@ -49,7 +49,6 @@ export default function EmployeeTable() {
     // console.log(new Date("1987-07-04T22:00:00.000+00:00").toISOString());
     // console.log(departmentsList);
   };
-
   return (
     <EmployeeContext.Provider
       value={isEditMode ? employeeTable[indexToEdit] : []}
