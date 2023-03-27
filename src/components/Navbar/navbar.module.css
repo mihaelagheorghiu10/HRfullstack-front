@@ -1,13 +1,16 @@
 .divContenedor {
-    width: 100%;
+    padding: 0 30px;
+    width:100svw;
     display: flex;
-    justify-content:space-around;
-    align-items: center;
+    justify-content:space-between;
+    align-items: center; 
     background-color: #9474ad;
     height: 55px; 
     top: 0; 
     position:fixed ;
     z-index:100 ;
+    box-sizing: border-box;
+   
 }
 
 .divLogo {
@@ -26,7 +29,7 @@
 .hamburgerIcon {
     font-size: 20px;
     color:#2A2A2A;
-    
+
 
 }
 .h1Title {
