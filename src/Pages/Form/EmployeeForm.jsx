@@ -1,14 +1,14 @@
-import { React, useContext } from "react";
-import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
-import styles from "./employeeForm.module.css";
-import defaultPhoto from "./Default.png";
-import { GiCancel } from "react-icons/gi";
-import employeeApiService from "../../apiServices/EmployeeApiService";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
-import * as Yup from "yup";
+import { React, useContext } from 'react'
+import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik'
+import styles from './employeeForm.module.css'
+import defaultPhoto from './Default.png'
+import { GiCancel } from 'react-icons/gi'
+import employeeApiService from '../../apiServices/EmployeeApiService'
+import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
+import * as Yup from 'yup'
 
-import EmployeeContext from "../../context/EmployeeContext";
+import EmployeeContext from '../../context/EmployeeContext'
 
 export default function EmployeeForm({
   hideFormButton,
@@ -28,71 +28,69 @@ export default function EmployeeForm({
     joiningDate,
     birthDate,
     dni,
-  } = useContext(EmployeeContext);
-  const userToEdit = useContext(EmployeeContext);
+  } = useContext(EmployeeContext)
+  const userToEdit = useContext(EmployeeContext)
   // console.log(userToEdit);
   // console.log(example.findIndex(person=> person.id == 18));
 
   let userSchema = Yup.object().shape({
-    photo: Yup.string().url("Debe ser una URL válida"),
+    photo: Yup.string().url('Debe ser una URL válida'),
     name: Yup.string()
-      .required("Campo obligatorio")
-      .max(30, "El número maximo de caracteres es 30"),
+      .required('Campo obligatorio')
+      .max(30, 'El número maximo de caracteres es 30'),
     lastName: Yup.string()
-      .required("Campo obligatorio")
-      .max(30, "El número maximo de caracteres es 30"),
+      .required('Campo obligatorio')
+      .max(30, 'El número maximo de caracteres es 30'),
     dni: Yup.string()
-      .length(9, "No es un DNI/NIE válido")
-      .required("Campo obligatorio"),
+      .length(9, 'No es un DNI/NIE válido')
+      .required('Campo obligatorio'),
     position: Yup.string()
-      .max(90, "El número maximo de caracteres es 90")
-      .required("Campo obligatorio"),
+      .max(90, 'El número maximo de caracteres es 90')
+      .required('Campo obligatorio'),
     phone: Yup.string()
-      .max(15, "El número maximo no debe exceder 15 dígitos")
-      .required("Campo obligatorio"),
+      .max(15, 'El número maximo no debe exceder 15 dígitos')
+      .required('Campo obligatorio'),
     email: Yup.string()
-      .email("No es un email válido")
-      .required("Campo obligatorio"),
+      .email('No es un email válido')
+      .required('Campo obligatorio'),
     location: Yup.string()
-      .min(2, "Nombre de localidad demasiado corto")
-      .max(50, "Nombre de localidad demasiado largo")
-      .required("Campo obligatorio"),
+      .min(2, 'Nombre de localidad demasiado corto')
+      .max(50, 'Nombre de localidad demasiado largo')
+      .required('Campo obligatorio'),
     salary: Yup.number()
       .test(
-        "Es positivo?",
-        "El número debe ser mayor a 0",
-        (value) => value > 0
+        'Es positivo?',
+        'El número debe ser mayor a 0',
+        (value) => value > 0,
       )
-      .required("Campo obligatorio"),
+      .required('Campo obligatorio'),
     joiningDate: Yup.date()
-      .max(new Date(), "La fecha no puede ser posterior a hoy")
-      .required("Campo obligatorio"),
+      .max(new Date(), 'La fecha no puede ser posterior a hoy')
+      .required('Campo obligatorio'),
     birthDate: Yup.date()
-      .max(new Date(), "La fecha no puede ser posterior a hoy")
-      .test(
-        "Es menor de 16?",
-        "La edad mínima es de 16 años",
-        function (value) {
-          return differenceInYears(new Date(), new Date(value)) >= 16;
-        }
-      )
-      .required("Campo obligatorio"),
-  });
+      .max(new Date(), 'La fecha no puede ser posterior a hoy')
+      .test('Es menor de 16?', 'La edad mínima es de 16 años', function (
+        value,
+      ) {
+        return differenceInYears(new Date(), new Date(value)) >= 16
+      })
+      .required('Campo obligatorio'),
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       photo: isEditMode ? userToEdit.photo : defaultPhoto,
-      name: isEditMode ? userToEdit.name : "",
-      lastName: isEditMode ? userToEdit.lastName : "",
-      position: isEditMode ? userToEdit.position : "",
-      phone: isEditMode ? userToEdit.phone : "",
-      email: isEditMode ? userToEdit.email : "",
-      location: isEditMode ? userToEdit.location : "",
-      salary: isEditMode ? userToEdit.salary : "",
-      joiningDate: isEditMode ? new Date(userToEdit.joiningDate) : "",
-      birthDate: isEditMode ? new Date(userToEdit.birthDate) : "",
-      dni: isEditMode ? userToEdit.dni : "",
+      name: isEditMode ? userToEdit.name : '',
+      lastName: isEditMode ? userToEdit.lastName : '',
+      position: isEditMode ? userToEdit.position : '',
+      phone: isEditMode ? userToEdit.phone : '',
+      email: isEditMode ? userToEdit.email : '',
+      location: isEditMode ? userToEdit.location : '',
+      salary: isEditMode ? userToEdit.salary : '',
+      joiningDate: isEditMode ? new Date(userToEdit.joiningDate) : '',
+      birthDate: isEditMode ? new Date(userToEdit.birthDate) : '',
+      dni: isEditMode ? userToEdit.dni : '',
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
@@ -104,11 +102,11 @@ export default function EmployeeForm({
 
       isEditMode
         ? employeeApiService.editById(userToEdit.id, values)
-        : employeeApiService.create(values); //Verificar funcionamiento!
-      hideFormButton();
-      navigate("/");
+        : employeeApiService.create(values) //Verificar funcionamiento!
+      hideFormButton()
+      navigate('/')
     },
-  });
+  })
 
   // console.log(
   //   `initial values from useContext: ${JSON.stringify(formik.initialValues)}`
@@ -124,7 +122,7 @@ export default function EmployeeForm({
             onClick={() => hideFormButton()}
           />
         </div>
-        <h3>{isEditMode ? "Editar Trabajador" : "Crear Nuevo Trabajador"}</h3>
+        <h3>{isEditMode ? 'Editar Trabajador' : 'Crear Nuevo Trabajador'}</h3>
         <div className={styles.imgColumn}>
           <div className={styles.imgContainer}>
             <img
@@ -332,19 +330,20 @@ export default function EmployeeForm({
         </div>
 
         <button className={styles.submitButton} type="submit">
-          {isEditMode ? "Editar" : "Crear"}
+          {isEditMode ? 'Editar' : 'Crear'}
         </button>
       </form>
     </div>
-  );
+  )
 }
 
 // BirthDate Validation
 const differenceInYears = (now, birthdate) => {
-  const ONE_DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
+  const ONE_DAY_IN_MILLIS = 24 * 60 * 60 * 1000
   const diffDays = Math.round(
-    Math.abs((now.getTime() - birthdate.getTime()) / ONE_DAY_IN_MILLIS)
-  );
-  const diffYears = Math.ceil(diffDays / 366);
-  return diffYears;
-};
+    Math.abs((now.getTime() - birthdate.getTime()) / ONE_DAY_IN_MILLIS),
+  )
+  const diffYears = Math.ceil(diffDays / 366)
+  return diffYears
+}
+// este es un comentario
