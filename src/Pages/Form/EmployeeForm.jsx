@@ -6,7 +6,7 @@ import { GiCancel } from "react-icons/gi";
 import employeeApiService from "../../apiServices/EmployeeApiService";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 import EmployeeContext from "../../context/EmployeeContext";
 
@@ -34,8 +34,7 @@ export default function EmployeeForm({
   // console.log(example.findIndex(person=> person.id == 18));
 
   let userSchema = Yup.object().shape({
-    photo: Yup.string()
-      .url("Debe ser una URL válida"),
+    photo: Yup.string().url("Debe ser una URL válida"),
     name: Yup.string()
       .required("Campo obligatorio")
       .max(30, "El número maximo de caracteres es 30"),
@@ -49,7 +48,7 @@ export default function EmployeeForm({
       .max(90, "El número maximo de caracteres es 90")
       .required("Campo obligatorio"),
     phone: Yup.string()
-    .max(15, "El número maximo no debe exceder 15 dígitos")      
+      .max(15, "El número maximo no debe exceder 15 dígitos")
       .required("Campo obligatorio"),
     email: Yup.string()
       .email("No es un email válido")
@@ -58,21 +57,26 @@ export default function EmployeeForm({
       .min(2, "Nombre de localidad demasiado corto")
       .max(50, "Nombre de localidad demasiado largo")
       .required("Campo obligatorio"),
-    salary: Yup.number().test(
-      'Es positivo?', 
-      'El número debe ser mayor a 0', 
-      (value) => value > 0)
+    salary: Yup.number()
+      .test(
+        "Es positivo?",
+        "El número debe ser mayor a 0",
+        (value) => value > 0
+      )
       .required("Campo obligatorio"),
     joiningDate: Yup.date()
       .max(new Date(), "La fecha no puede ser posterior a hoy")
       .required("Campo obligatorio"),
     birthDate: Yup.date()
       .max(new Date(), "La fecha no puede ser posterior a hoy")
-      .test("Es menor de 16?", "La edad mínima es de 16 años", function (value) {
-
-        return differenceInYears(new Date(), new Date(value)) >= 16;
-      })      
-      .required("Campo obligatorio")
+      .test(
+        "Es menor de 16?",
+        "La edad mínima es de 16 años",
+        function (value) {
+          return differenceInYears(new Date(), new Date(value)) >= 16;
+        }
+      )
+      .required("Campo obligatorio"),
   });
 
   const navigate = useNavigate();
@@ -90,7 +94,7 @@ export default function EmployeeForm({
       birthDate: isEditMode ? new Date(userToEdit.birthDate) : "",
       dni: isEditMode ? userToEdit.dni : "",
     },
-    validationSchema : userSchema,
+    validationSchema: userSchema,
     onSubmit: (values) => {
       // Aqui se cambia la funcion para crear o editar
       //alert(JSON.stringify(values, null, 2));
@@ -111,7 +115,6 @@ export default function EmployeeForm({
   // );
 
   return (
-    
     <div className={styles.formPageContainer}>
       <div className={styles.darkBackground}></div>
       <form className={styles.formPage} onSubmit={formik.handleSubmit}>
@@ -141,7 +144,8 @@ export default function EmployeeForm({
               name="photo"
               type="text"
               onChange={formik.handleChange}
-              value={isEditMode ? formik.values.photo : ""}
+              // value={isEditMode ? formik.values.photo : ""}
+              value={formik.values.photo}
             />
             {formik.errors.photo ? (
               <div className={styles.errorToast}>{formik.errors.photo}</div>
@@ -337,10 +341,10 @@ export default function EmployeeForm({
 
 // BirthDate Validation
 const differenceInYears = (now, birthdate) => {
-
   const ONE_DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
-  const diffDays = Math.round(Math.abs((now.getTime() - birthdate.getTime()) / (ONE_DAY_IN_MILLIS)));
+  const diffDays = Math.round(
+    Math.abs((now.getTime() - birthdate.getTime()) / ONE_DAY_IN_MILLIS)
+  );
   const diffYears = Math.ceil(diffDays / 366);
   return diffYears;
-}
-
+};
