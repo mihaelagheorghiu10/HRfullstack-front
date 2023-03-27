@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
-import styles from "./employeeTable.module.css";
-import employeeApiService from "../../apiServices/EmployeeApiService";
-import EmployeeRow from "../EmployeeRow/EmployeeRow";
-import { BsPersonFillAdd } from "react-icons/bs";
+import React, { useState, useEffect } from 'react'
+import styles from './employeeTable.module.css'
+import employeeApiService from '../../apiServices/EmployeeApiService'
+import EmployeeRow from '../EmployeeRow/EmployeeRow'
+import { BsPersonFillAdd } from 'react-icons/bs'
 // import { Link } from "react-router-dom";
-import EmployeeForm from "../../Pages/Form/EmployeeForm";
+import EmployeeForm from '../../Pages/Form/EmployeeForm'
 //import { Employee } from "../Employee/Employee";
-import EmployeeContext from "../../context/EmployeeContext";
-import departmentApiService from "../../apiServices/DepartmentApiService";
+import EmployeeContext from '../../context/EmployeeContext'
+import departmentApiService from '../../apiServices/DepartmentApiService'
+import SearchBar from '../SearchBar/SearchBar'
 
 export default function EmployeeTable() {
-  const [employeeTable, setEmployeeTable] = useState([]);
-  const [formIsVisible, setFormIsVisible] = useState(false);
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [indexToEdit, setIndexToEdit] = useState(null);
-  const [departmentsList, setDepartmentsList] = useState([]);
+  const [employeeTable, setEmployeeTable] = useState([])
+  const [formIsVisible, setFormIsVisible] = useState(false)
+  const [isEditMode, setIsEditMode] = useState(false)
+  const [indexToEdit, setIndexToEdit] = useState(null)
+  const [departmentsList, setDepartmentsList] = useState([])
 
   // const userData = {
   //   id: 1,
@@ -33,43 +34,44 @@ export default function EmployeeTable() {
 
   useEffect(() => {
     employeeApiService.getAll().then((data) => {
-      setEmployeeTable(data);
-    });
+      setEmployeeTable(data)
+    })
     departmentApiService.getAll().then((data) => {
-      setDepartmentsList(data);
-    });
-  });
+      setDepartmentsList(data)
+    })
+  })
 
   const deleteById = (id) => {
-    employeeApiService.deleteById(id);
-    setEmployeeTable(employeeTable.filter((employee) => employee.id !== id));
-  };
+    employeeApiService.deleteById(id)
+    setEmployeeTable(employeeTable.filter((employee) => employee.id !== id))
+  }
 
   const showFormButton = () => {
     // setIsEditMode(false);
-    setFormIsVisible(true);
-  };
+    setFormIsVisible(true)
+  }
 
   const hideFormButton = () => {
-    setFormIsVisible(false);
-    setIsEditMode(false);
-  };
+    setFormIsVisible(false)
+    setIsEditMode(false)
+  }
 
   const editByIndex = (index) => {
-    setIsEditMode(true);
-    setIndexToEdit(index);
-    showFormButton();
+    setIsEditMode(true)
+    setIndexToEdit(index)
+    showFormButton()
     // console.log(employeeTable);
     // console.log(index);
     // console.log(new Date("1987-07-04T22:00:00.000+00:00").toISOString());
     // console.log(departmentsList);
-  };
+  }
 
   return (
     <EmployeeContext.Provider
       value={isEditMode ? employeeTable[indexToEdit] : []}
     >
       <div className={styles.employeeListContainer}>
+        <SearchBar />
         {formIsVisible ? (
           <EmployeeForm
             departmentsList={departmentsList}
@@ -112,5 +114,5 @@ export default function EmployeeTable() {
         </div>
       </div>
     </EmployeeContext.Provider>
-  );
+  )
 }
