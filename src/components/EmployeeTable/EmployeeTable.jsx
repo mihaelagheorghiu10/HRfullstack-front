@@ -15,7 +15,7 @@ export default function EmployeeTable() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [indexToEdit, setIndexToEdit] = useState(null);
   const [departmentsList, setDepartmentsList] = useState([]);
-
+  //cccccc
   useEffect(() => {
     departmentApiService.getAll().then((data) => {
       setDepartmentsList(data);
