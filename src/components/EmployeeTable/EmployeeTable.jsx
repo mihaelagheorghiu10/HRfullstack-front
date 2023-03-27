@@ -81,6 +81,7 @@ export default function EmployeeTable() {
           />
         ) : null}
         <div className={styles.employeeTableContainer}>
+          <SearchBar />
           <div className={styles.employeeHeadContainer}>
             <h3 h3 className={styles.employeeIdHead}>
               <BsPersonFillAdd
