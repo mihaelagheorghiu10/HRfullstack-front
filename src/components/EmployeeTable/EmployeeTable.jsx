@@ -16,29 +16,14 @@ export default function EmployeeTable() {
   const [indexToEdit, setIndexToEdit] = useState(null);
   const [departmentsList, setDepartmentsList] = useState([]);
 
-  // const userData = {
-  //   id: 1,
-  //   name: "hola",
-  //   lastName: "bola",
-  //   photo: "esta",
-  //   position: "hola",
-  //   phone: "141234",
-  //   email: "nu132412ll",
-  //   location: "3ggdfa",
-  //   salary: 1232131,
-  //   joiningDate: "asdf123",
-  //   birthDate: "nul123l",
-  //   dni: "null",
-  // };
-
   useEffect(() => {
-    employeeApiService.getAll().then((data) => {
-      setEmployeeTable(data);
-    });
     departmentApiService.getAll().then((data) => {
       setDepartmentsList(data);
     });
-  });
+    employeeApiService.getAll().then((data) => {
+      setEmployeeTable(data);
+    });
+  }, []);
 
   const deleteById = (id) => {
     employeeApiService.deleteById(id);
@@ -80,7 +65,7 @@ export default function EmployeeTable() {
         ) : null}
         <div className={styles.employeeTableContainer}>
           <div className={styles.employeeHeadContainer}>
-            <h3 h3 className={styles.employeeIdHead}>
+            <h3 className={styles.employeeIdHead}>
               <BsPersonFillAdd
                 className={styles.showFormButton}
                 onClick={() => showFormButton()}

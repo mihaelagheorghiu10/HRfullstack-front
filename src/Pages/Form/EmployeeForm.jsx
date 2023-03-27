@@ -15,20 +15,6 @@ export default function EmployeeForm({
   isEditMode,
   departmentsList,
 }) {
-  const {
-    id,
-    name,
-    lastName,
-    photo,
-    position,
-    phone,
-    email,
-    location,
-    salary,
-    joiningDate,
-    birthDate,
-    dni,
-  } = useContext(EmployeeContext);
   const userToEdit = useContext(EmployeeContext);
   // console.log(userToEdit);
   // console.log(example.findIndex(person=> person.id == 18));
@@ -106,7 +92,6 @@ export default function EmployeeForm({
         ? employeeApiService.editById(userToEdit.id, values)
         : employeeApiService.create(values); //Verificar funcionamiento!
       hideFormButton();
-      navigate("/");
     },
   });
 
