@@ -3,6 +3,7 @@ import styles from "./employeeRow.module.css";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
 
 export default function EmployeeRow({ employee, deleteById, index, editByIndex }) {
+ 
   return (
     <div className={styles.employeeRowContainer}>
       <p className= {styles.employeeId}>{employee.id}</p>

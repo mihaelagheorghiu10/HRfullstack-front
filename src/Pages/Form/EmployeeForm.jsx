@@ -14,6 +14,7 @@ export default function EmployeeForm({
   hideFormButton,
   isEditMode,
   departmentsList,
+  handleSubmit
 }) {
   const {
     id,
@@ -92,17 +93,12 @@ export default function EmployeeForm({
     },
     validationSchema : userSchema,
     onSubmit: (values) => {
-      // Aqui se cambia la funcion para crear o editar
-      //alert(JSON.stringify(values, null, 2));
-      // console.log(`is edit mode? ${isEditMode}`);
-      // console.log(JSON.stringify(values));
-      // if (isEditMode) console.log(`id: ${userToEdit.id}`);
-
-      isEditMode
-        ? employeeApiService.editById(userToEdit.id, values)
-        : employeeApiService.create(values); //Verificar funcionamiento!
+      
+      handleSubmit(values);
       hideFormButton();
-      navigate("/");
+      
+      
+      // navigate("/");
     },
   });
 

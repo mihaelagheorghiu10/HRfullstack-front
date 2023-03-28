@@ -31,19 +31,38 @@ export default function EmployeeTable() {
   //   dni: "null",
   // };
 
-  useEffect(() => {
+  useEffect(() => { // combinar apiservices
     employeeApiService.getAll().then((data) => {
       setEmployeeTable(data);
     });
     departmentApiService.getAll().then((data) => {
       setDepartmentsList(data);
     });
-  });
+  },[]);
 
   const deleteById = (id) => {
     employeeApiService.deleteById(id);
     setEmployeeTable(employeeTable.filter((employee) => employee.id !== id));
   };
+
+  // Crear editById
+  const editById = (id, employee) => {
+    employeeApiService.editById(id, employee).then(()=> {
+      setEmployeeTable(employeeTable.map(emp => emp.id === id ? employee : emp))});
+    
+    
+  }
+
+  const createEmployee = (employee) => {
+    employeeApiService.create(employee).then(()=> {
+    setEmployeeTable({...employeeTable, employee})});
+  }
+
+  const handleSubmit = (values) => {
+    isEditMode
+        ? editById(employeeTable[indexToEdit].id, values)
+        : createEmployee(values); 
+  }
 
   const showFormButton = () => {
     // setIsEditMode(false);
@@ -76,6 +95,7 @@ export default function EmployeeTable() {
             isEditMode={isEditMode}
             indexToEdit={indexToEdit}
             hideFormButton={hideFormButton}
+            handleSubmit = {handleSubmit}
           />
         ) : null}
         <div className={styles.employeeTableContainer}>
