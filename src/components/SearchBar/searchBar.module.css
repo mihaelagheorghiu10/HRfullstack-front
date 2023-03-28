@@ -7,7 +7,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     gap: 0;
     font-size: x-large;
     z-index: 1000;
@@ -18,7 +17,7 @@
     border:none;
     padding: 2px 15px;
     background-color: #f5f5f5;
-    width: clamp(180px, 60svw, 550px);
+    width: clamp(170px, 60svw, 550px);
     height: 23px;
 }
 
@@ -32,3 +31,4 @@
     height: 23px;
     width: 110px;
 }
+
