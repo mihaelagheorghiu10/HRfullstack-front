@@ -60,6 +60,8 @@ export default function EmployeeTable() {
             isEditMode={isEditMode}
             indexToEdit={indexToEdit}
             hideFormButton={hideFormButton}
+            setEmployeeTable={setEmployeeTable}
+            employeeTable={employeeTable}
           />
         ) : null}
         <div className={styles.employeeTableContainer}>
