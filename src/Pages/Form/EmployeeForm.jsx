@@ -86,8 +86,6 @@ export default function EmployeeForm({
       // Aqui se cambia la funcion para crear o editar
 
       const employeeDataToSend = { ...values };
-      //inv que hay en department list
-      //buscar el department by id
       let departmentName = "";
 
       departmentApiService
