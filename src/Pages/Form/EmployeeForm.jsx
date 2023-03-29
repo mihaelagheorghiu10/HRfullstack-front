@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
 import EmployeeContext from "../../context/EmployeeContext";
+import departmentApiService from "../../apiServices/DepartmentApiService";
 
 export default function EmployeeForm({
   hideFormButton,
@@ -85,19 +86,34 @@ export default function EmployeeForm({
       // Aqui se cambia la funcion para crear o editar
 
       const employeeDataToSend = { ...values };
-      employeeDataToSend.department = { id: values.department };
+      //inv que hay en department list
+      //buscar el department by id
+      let departmentName = "";
+
+      departmentApiService
+        .getById(values.department)
+        .then((dep) => (departmentName = dep.name));
+
+      employeeDataToSend.department = {
+        id: values.department,
+        name: departmentName,
+      };
+
       if (isEditMode) {
-        employeeApiService.editById(userToEdit.id, values);
-        const newList = employeeTable.map((employee) => {
-          if (employee.id === userToEdit.id) {
-            return values;
-          }
-          return employee;
+        employeeApiService.editById(userToEdit.id, values).then((emp) => {
+          const newList = employeeTable.map((employee) => {
+            if (employee.id === userToEdit.id) {
+              return emp;
+            }
+            return employee;
+          });
+          setEmployeeTable(newList);
         });
-        setEmployeeTable(newList);
       } else {
-        const emp = employeeApiService.create(employeeDataToSend);
-        setEmployeeTable([...employeeTable, emp]);
+        employeeApiService.create(employeeDataToSend).then((emp) => {
+          emp.department.name = departmentName;
+          setEmployeeTable([...employeeTable, emp]);
+        });
       }
       hideFormButton();
     },
