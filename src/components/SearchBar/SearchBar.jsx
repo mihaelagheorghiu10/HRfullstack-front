@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./searchBar.module.css";
 import { IoSearch } from "react-icons/io5";
 
 export default function SearchBar() {
-  
+  //const [searchBy, setSearchBy] = useState("Por nombre");
 
+  
+  
+  //console.log(searchBy);
   const selectorHandler = (selector) => {
     switch (selector) {
       case "Por Localidad": {
@@ -31,7 +34,7 @@ export default function SearchBar() {
         className={styles.searchBarSelector}
         name="searchBy"
         id="searchBy"
-        onChange={(e)=>(selectorHandler(e.target.value))}
+        // onChange={(e)=>(setSearchBy(e.target.value))}
       >
         <option>Por nombre</option>
         <option>Por Posición</option>
