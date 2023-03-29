@@ -18,8 +18,6 @@ export default function EmployeeForm({
   setEmployeeTable,
 }) {
   const userToEdit = useContext(EmployeeContext);
-  // console.log(userToEdit);
-  // console.log(example.findIndex(person=> person.id == 18));
 
   let userSchema = Yup.object().shape({
     photo: Yup.string().url("Debe ser una URL válida"),
@@ -80,16 +78,14 @@ export default function EmployeeForm({
       joiningDate: isEditMode ? new Date(userToEdit.joiningDate) : "",
       birthDate: isEditMode ? new Date(userToEdit.birthDate) : "",
       dni: isEditMode ? userToEdit.dni : "",
-      department: isEditMode ? userToEdit.department.id : "1",
+      department: isEditMode ? userToEdit.department.id : "0",
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
       // Aqui se cambia la funcion para crear o editar
-      //alert(JSON.stringify(values, null, 2));
-      // console.log(`is edit mode? ${isEditMode}`);
-      // console.log(JSON.stringify(values));
-      // if (isEditMode) console.log(`id: ${userToEdit.id}`);
-      console.table(values);
+
+      const employeeDataToSend = { ...values };
+      employeeDataToSend.department = { id: values.department };
       if (isEditMode) {
         employeeApiService.editById(userToEdit.id, values);
         const newList = employeeTable.map((employee) => {
@@ -100,15 +96,12 @@ export default function EmployeeForm({
         });
         setEmployeeTable(newList);
       } else {
-        employeeApiService.create(values);
+        const emp = employeeApiService.create(employeeDataToSend);
+        setEmployeeTable([...employeeTable, emp]);
       }
       hideFormButton();
     },
   });
-
-  // console.log(
-  //   `initial values from useContext: ${JSON.stringify(formik.initialValues)}`
-  // );
 
   return (
     <div className={styles.formPageContainer}>
@@ -148,13 +141,14 @@ export default function EmployeeForm({
           </div>
         </div>
         <div className={styles.labelInputSelector}>
-          <label className={styles.formLabelSelector} htmlFor="departamento">
+          <label className={styles.formLabelSelector} htmlFor="department">
             Departamento
           </label>
           <select
             className={styles.departmentSelector}
-            id="departamento"
-            value={formik.values.department.id}
+            id="department"
+            value={formik.values.department}
+            onChange={formik.handleChange}
           >
             {departmentsList.map((dep, index) => (
               <option key={index} value={dep.id}>
