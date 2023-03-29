@@ -66,7 +66,6 @@ export default function EmployeeForm({
       )
       .required("Campo obligatorio"),
   });
-
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -81,6 +80,7 @@ export default function EmployeeForm({
       joiningDate: isEditMode ? new Date(userToEdit.joiningDate) : "",
       birthDate: isEditMode ? new Date(userToEdit.birthDate) : "",
       dni: isEditMode ? userToEdit.dni : "",
+      department: isEditMode ? userToEdit.department.id : "1",
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
@@ -89,7 +89,7 @@ export default function EmployeeForm({
       // console.log(`is edit mode? ${isEditMode}`);
       // console.log(JSON.stringify(values));
       // if (isEditMode) console.log(`id: ${userToEdit.id}`);
-
+      console.table(values);
       if (isEditMode) {
         employeeApiService.editById(userToEdit.id, values);
         const newList = employeeTable.map((employee) => {
@@ -127,7 +127,6 @@ export default function EmployeeForm({
               className={styles.employeeImg}
               src={formik.values.photo}
               alt=""
-              srcset=""
             />
           </div>
           <div className={styles.labelInputPhoto}>
@@ -152,9 +151,15 @@ export default function EmployeeForm({
           <label className={styles.formLabelSelector} htmlFor="departamento">
             Departamento
           </label>
-          <select className={styles.departmentSelector} id="departamento">
+          <select
+            className={styles.departmentSelector}
+            id="departamento"
+            value={formik.values.department.id}
+          >
             {departmentsList.map((dep, index) => (
-              <option value={dep.name}>{dep.name}</option>
+              <option key={index} value={dep.id}>
+                {dep.name}
+              </option>
             ))}
           </select>
         </div>

@@ -22,7 +22,7 @@ export default function EmployeeRow({
         className={styles.employeeName}
       >{`${employee.name} ${employee.lastName}`}</p>
       <p className={styles.employeePosition}>{employee.position}</p>
-      <p className={styles.employeeDepartment}>{employee.department.name}</p>
+      <p className={styles.employeeDepartment}>{employee.department?.name}</p>
       <p className={styles.employeePhone}>{employee.phone}</p>
       <p className={styles.employeeEmail}>{employee.email}</p>
       <p className={styles.employeeLocation}>{employee.location}</p>
