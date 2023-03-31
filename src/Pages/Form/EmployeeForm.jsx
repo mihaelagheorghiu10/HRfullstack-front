@@ -60,7 +60,12 @@ export default function EmployeeForm({
         "Es menor de 16?",
         "La edad mínima es de 16 años",
         function (value) {
-          return differenceInYears(new Date(), new Date(value)) >= 16;
+          return (
+            differenceInYears(
+              new Date(formik.values.joiningDate),
+              new Date(value)
+            ) >= 16
+          );
         }
       )
       .required("Campo obligatorio"),
@@ -76,14 +81,20 @@ export default function EmployeeForm({
       email: isEditMode ? userToEdit.email : "",
       location: isEditMode ? userToEdit.location : "",
       salary: isEditMode ? userToEdit.salary : "",
-      joiningDate: isEditMode ? new Date(userToEdit.joiningDate) : "",
-      birthDate: isEditMode ? new Date(userToEdit.birthDate) : "",
+      joiningDate: isEditMode
+        ? new Date(userToEdit.joiningDate).toISOString().split("T")[0]
+        : "",
+      birthDate: isEditMode
+        ? new Date(userToEdit.birthDate).toISOString().split("T")[0]
+        : "",
       dni: isEditMode ? userToEdit.dni : "",
       department: isEditMode ? userToEdit.department.id : "0",
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
       // Aqui se cambia la funcion para crear o editar
+
+      console.log(new Date(userToEdit.birthDate).toLocaleDateString());
 
       const employeeDataToSend = { ...values };
       let departmentName = "";
@@ -98,15 +109,17 @@ export default function EmployeeForm({
       };
 
       if (isEditMode) {
-        employeeApiService.editById(userToEdit.id, values).then((emp) => {
-          const newList = employeeTable.map((employee) => {
-            if (employee.id === userToEdit.id) {
-              return emp;
-            }
-            return employee;
+        employeeApiService
+          .editById(userToEdit.id, employeeDataToSend)
+          .then((emp) => {
+            const newList = employeeTable.map((employee) => {
+              if (employee.id === userToEdit.id) {
+                return emp;
+              }
+              return employee;
+            });
+            setEmployeeTable(newList);
           });
-          setEmployeeTable(newList);
-        });
       } else {
         employeeApiService.create(employeeDataToSend).then((emp) => {
           emp.department.name = departmentName;
