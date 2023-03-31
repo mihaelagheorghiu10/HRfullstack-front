@@ -2,10 +2,15 @@ import React from "react";
 import styles from "./employeeRow.module.css";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
 
-export default function EmployeeRow({ employee, deleteById, index, editByIndex }) {
+export default function EmployeeRow({
+  employee,
+  deleteById,
+  index,
+  editByIndex,
+}) {
   return (
     <div className={styles.employeeRowContainer}>
-      <p className= {styles.employeeId}>{employee.id}</p>
+      <p className={styles.employeeId}>{employee.id}</p>
       <div className={styles.tableImgContainer}>
         <img
           className={styles.tableImg}
@@ -17,6 +22,7 @@ export default function EmployeeRow({ employee, deleteById, index, editByIndex }
         className={styles.employeeName}
       >{`${employee.name} ${employee.lastName}`}</p>
       <p className={styles.employeePosition}>{employee.position}</p>
+      <p className={styles.employeeDepartment}>{employee.department?.name}</p>
       <p className={styles.employeePhone}>{employee.phone}</p>
       <p className={styles.employeeEmail}>{employee.email}</p>
       <p className={styles.employeeLocation}>{employee.location}</p>
@@ -29,7 +35,10 @@ export default function EmployeeRow({ employee, deleteById, index, editByIndex }
         {new Date(employee.birthDate).toLocaleDateString("es-ES")}
       </p>
       <div className={styles.employeeButtons}>
-        <MdEdit onClick = {() => editByIndex(index)} className={`${styles.actionButton} ${styles.editButton}`} />
+        <MdEdit
+          onClick={() => editByIndex(index)}
+          className={`${styles.actionButton} ${styles.editButton}`}
+        />
         <MdDeleteForever
           className={`${styles.actionButton} ${styles.deleteButton}`}
           onClick={() => deleteById(employee.id)}
