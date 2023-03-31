@@ -25,6 +25,10 @@
   width: 70px !important;
 }
 
+.employeePosition {
+  width: 160px !important;
+}
+
 .employeeEmail {
   width: 220px !important;
 }

@@ -135,7 +135,7 @@ export default function EmployeeTable() {
             </h3>
             <h3 className={styles.employeeAddBtn}> </h3>
             <h3 className={styles.employeeNameHead}>Nombre</h3>
-            <h3 className={styles.employeePositionHead}>Cargo</h3>
+            <h3 className={styles.employeePositionHead}>Posición</h3>
             <h3 className={styles.employeeDepartmentHead}>Departamento</h3>
             <h3 className={styles.employeePhoneHead}>Teléfono</h3>
             <h3 className={styles.employeeEmailHead}>Email</h3>
