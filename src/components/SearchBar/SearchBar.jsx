@@ -34,7 +34,7 @@ export default function SearchBar() {
         className={styles.searchBarSelector}
         name="searchBy"
         id="searchBy"
-        // onChange={(e)=>(setSearchBy(e.target.value))}
+        onChange={(e)=>(selectorHandler(e.target.value))}
       >
         <option>Por nombre</option>
         <option>Por Posición</option>
