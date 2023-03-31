@@ -2,41 +2,23 @@ import React, { useEffect, useState } from "react";
 import styles from "./searchBar.module.css";
 import { IoSearch } from "react-icons/io5";
 
-export default function SearchBar() {
+export default function SearchBar({
+  selectorChangeHandler,
+  inputChangeHandler,
+}) {
   //const [searchBy, setSearchBy] = useState("Por nombre");
 
-  
-  
   //console.log(searchBy);
-  const selectorHandler = (selector) => {
-    switch (selector) {
-      case "Por Localidad": {
-        console.log("se busca por localidad");
-        break;
-      }
-      case "Por Posición": {
-        console.log("se busca por posición");
-        break;
-      }
-      case "Por DNI/NIE": {
-        console.log("se busca por DNI");
-        break;
-      }
-      default: {
-        console.log("se busca por nombre")
-        break;
-      }
-    }
-  }
+
   return (
     <div className={styles.searchBarContainer}>
       <select
         className={styles.searchBarSelector}
         name="searchBy"
         id="searchBy"
-        onChange={(e)=>(selectorHandler(e.target.value))}
+        onChange={(e) => selectorChangeHandler(e.target.value)}
       >
-        <option>Por nombre</option>
+        <option>Por Nombre</option>
         <option>Por Posición</option>
         <option>Por DNI/NIE</option>
         <option>Por Localidad</option>
@@ -45,9 +27,8 @@ export default function SearchBar() {
         className={styles.searchByNameInput}
         type="text"
         placeholder="Buscar"
-        onChange={(e)=>console.log("input: " + e.target.value)}
+        onChange={(e) => inputChangeHandler(e.target.value)}
       />
-      
     </div>
   );
 }
