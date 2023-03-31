@@ -19,7 +19,6 @@ export default function EmployeeForm({
   setEmployeeTable,
 }) {
   const userToEdit = useContext(EmployeeContext);
-
   let userSchema = Yup.object().shape({
     photo: Yup.string().url("Debe ser una URL válida"),
     name: Yup.string()
