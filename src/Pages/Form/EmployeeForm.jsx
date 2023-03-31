@@ -1,11 +1,9 @@
 import { React, useContext } from "react";
-import { useFormik, Formik, Form, Field, ErrorMessage } from "formik";
+import { useFormik } from "formik";
 import styles from "./employeeForm.module.css";
 import defaultPhoto from "./Default.png";
 import { GiCancel } from "react-icons/gi";
 import employeeApiService from "../../apiServices/EmployeeApiService";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
 import EmployeeContext from "../../context/EmployeeContext";
@@ -70,7 +68,7 @@ export default function EmployeeForm({
       )
       .required("Campo obligatorio"),
   });
-  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       photo: isEditMode ? userToEdit.photo : defaultPhoto,
@@ -92,10 +90,6 @@ export default function EmployeeForm({
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
-      // Aqui se cambia la funcion para crear o editar
-
-      console.log(new Date(userToEdit.birthDate).toLocaleDateString());
-
       const employeeDataToSend = { ...values };
       let departmentName = "";
 
@@ -159,7 +153,6 @@ export default function EmployeeForm({
               name="photo"
               type="text"
               onChange={formik.handleChange}
-              // value={isEditMode ? formik.values.photo : ""}
               value={formik.values.photo}
             />
             {formik.errors.photo ? (
@@ -370,4 +363,3 @@ const differenceInYears = (now, birthdate) => {
   const diffYears = Math.ceil(diffDays / 366);
   return diffYears;
 };
-// este es un comentario
