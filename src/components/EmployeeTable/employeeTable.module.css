@@ -26,9 +26,10 @@
   height: 50px;
   padding: 5px 15px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(13, 1fr);
   gap: 10px;
   margin-bottom: 15px;
+  align-items: center;
 }
 
 .employeeHeadContainer h3 {
@@ -40,13 +41,17 @@
   width: 70px !important;
 }
 
+.employeeDepartmentHead {
+  width: 130px !important;
+}
+
 .employeeIdHead svg {
   font-size: 35px !important;
   color: #992b9c;
 }
 
 .employeeEmailHead {
-  width: 200px !important;
+  width: 220px !important;
 }
 
 .employeeLocationHead {
