@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./loginPage.module.css";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import useAuth from "../../hooks/useAuth";
 
 const LoginPage = () => {
+  const { login } = useAuth();
+
   let loginSchema = Yup.object().shape({
     email: Yup.string()
       .email("No es un email válido")
@@ -21,9 +24,8 @@ const LoginPage = () => {
     },
     validationSchema: loginSchema,
     /*-------------------------------- SUBMIT ---------------------------------------------------*/
-    onSubmit: (values) => {
-      console.log(values);
-      window.localStorage.setItem("login", JSON.stringify(values));
+    onSubmit: async (values) => {
+      await login(values);
     },
   });
 
@@ -62,6 +64,13 @@ const LoginPage = () => {
       <button className={styles.submitBtn} type="submit">
         Login
       </button>
+      {/* <button
+        className={styles.submitBtn}
+        onClick={async () => await logout()}
+        type="button"
+      >
+        Logout
+      </button> */}
     </form>
   );
 };

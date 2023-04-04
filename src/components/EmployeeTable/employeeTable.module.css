@@ -8,7 +8,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: baseline;
   background-color: #d6ccd8;
