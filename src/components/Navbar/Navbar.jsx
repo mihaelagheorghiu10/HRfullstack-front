@@ -2,7 +2,7 @@ import React from "react";
 //import { NavbarDiv } from './Navbar.styled'
 import styles from "./navbar.module.css";
 import logo from "../../assets/Logo.png";
-import { GiHamburgerMenu } from "react-icons/gi";
+// import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
