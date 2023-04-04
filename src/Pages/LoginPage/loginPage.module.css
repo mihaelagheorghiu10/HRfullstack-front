@@ -1,0 +1,30 @@
+.mainContainer {
+  padding-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.mainContainer div {
+  display: flex;
+  flex-direction: column;
+}
+.formInput {
+  border-radius: 10px;
+  border: none;
+  padding: 2px 15px;
+  background-color: #f5f5f5;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.submitBtn {
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  background-color: #3cc2bf;
+}
+
+.errorToast {
+  color: crimson;
+}
