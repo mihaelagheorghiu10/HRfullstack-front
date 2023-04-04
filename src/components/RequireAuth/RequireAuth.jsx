@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 
 const RequireAuth = ({ children }) => {
   const { authed, login } = useAuth();
+
   const saved = localStorage.getItem("login");
   if (saved && !authed) login();
 
