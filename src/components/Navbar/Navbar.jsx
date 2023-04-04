@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 //import { NavbarDiv } from './Navbar.styled'
-import styles from './navbar.module.css'
-import logo from '../../assets/Logo.png'
-import { GiHamburgerMenu } from 'react-icons/gi'
+import styles from "./navbar.module.css";
+import logo from "../../assets/Logo.png";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+
 export default function Navbar() {
+  const { authed, logout } = useAuth();
   return (
     //<NavbarDiv>
     <div className={styles.divContenedor}>
@@ -14,10 +18,16 @@ export default function Navbar() {
         <h1 className={styles.h1Title}>HR App</h1>
       </div>
       <div className={styles.divHamburguesa}>
-        <GiHamburgerMenu className={styles.hamburgerIcon} />
+        {/* <GiHamburgerMenu className={styles.hamburgerIcon} /> */}
+        {!authed ? <Link to="/login">Login</Link> : null}
+        {authed ? (
+          <Link to="/" onClick={async () => logout()}>
+            Logout
+          </Link>
+        ) : null}
       </div>
     </div>
-    
+
     //</NavbarDiv>
-  )
+  );
 }

@@ -1,38 +1,39 @@
 .divContenedor {
-    padding: 0 30px;
-    width:100svw;
-    display: flex;
-    justify-content:space-between;
-    align-items: center; 
-    background-color: #9474ad;
-    height: 55px; 
-    top: 0; 
-    position:fixed ;
-    z-index:100 ;
-    box-sizing: border-box;
-   
+  padding: 0 30px;
+  width: 100svw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #9474ad;
+  height: 55px;
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  box-sizing: border-box;
 }
 
 .divLogo {
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    overflow: hidden;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
+.divHamburguesa {
+  display: flex;
+  gap: 2em;
 }
 .imgLogo {
-    height: 100%;
+  height: 100%;
 }
 
 .hamburgerIcon {
-    font-size: 20px;
-    color:#2A2A2A;
-
-
+  font-size: 20px;
+  color: #2a2a2a;
 }
 .h1Title {
-    font-size: 20px;
-    color:#2A2A2A;
+  font-size: 20px;
+  color: #2a2a2a;
 }

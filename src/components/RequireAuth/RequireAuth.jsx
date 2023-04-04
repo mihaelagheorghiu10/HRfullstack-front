@@ -3,9 +3,11 @@ import { Navigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const RequireAuth = ({ children }) => {
-  const { authed } = useAuth();
+  const { authed, login } = useAuth();
   const saved = localStorage.getItem("login");
-  return saved || authed === true ? children : <Navigate to="/login" replace />;
+  if (saved && !authed) login();
+
+  return saved ? children : <Navigate to="/login" replace />;
 };
 
 export default RequireAuth;
