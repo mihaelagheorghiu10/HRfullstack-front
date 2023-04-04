@@ -1,31 +1,31 @@
-import React, { useState } from 'react'
-import styles from './loginPage.module.css'
-import * as Yup from 'yup'
-import { useFormik } from 'formik'
+import React from "react";
+import styles from "./loginPage.module.css";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
 const LoginPage = () => {
   let loginSchema = Yup.object().shape({
     email: Yup.string()
-      .email('No es un email válido')
-      .required('Campo obligatorio'),
+      .email("No es un email válido")
+      .required("Campo obligatorio"),
     password: Yup.string()
-      .min(8, 'El número mínimo de caracteres es 8')
-      .max(30, 'El número maximo de caracteres es 30')
-      .required('Campo obligatorio'),
-  })
+      .min(8, "El número mínimo de caracteres es 8")
+      .max(30, "El número maximo de caracteres es 30")
+      .required("Campo obligatorio"),
+  });
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema: loginSchema,
     /*-------------------------------- SUBMIT ---------------------------------------------------*/
     onSubmit: (values) => {
-      console.log(values)
-      window.localStorage.setItem('login', JSON.stringify(values))
+      console.log(values);
+      window.localStorage.setItem("login", JSON.stringify(values));
     },
-  })
+  });
 
   return (
     <form className={styles.mainContainer} onSubmit={formik.handleSubmit}>
@@ -63,7 +63,7 @@ const LoginPage = () => {
         Login
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

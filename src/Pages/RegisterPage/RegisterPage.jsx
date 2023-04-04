@@ -1,47 +1,39 @@
-import React, { useState } from 'react'
-import styles from './registerPage.module.css'
-import * as Yup from 'yup'
-import { useFormik } from 'formik'
+import React from "react";
+import styles from "./registerPage.module.css";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
 const RegisterPage = () => {
   let registerSchema = Yup.object().shape({
     username: Yup.string()
-      .min(8, 'El número mínimo de caracteres es 8')
-      .max(30, 'El número maximo de caracteres es 50')
-      .required('Campo obligatorio'),
+      .min(8, "El número mínimo de caracteres es 8")
+      .max(30, "El número maximo de caracteres es 50")
+      .required("Campo obligatorio"),
     email: Yup.string()
-      .email('No es un email válido')
-      .required('Campo obligatorio'),
+      .email("No es un email válido")
+      .required("Campo obligatorio"),
     password: Yup.string()
-      .min(8, 'El número mínimo de caracteres es 8')
-      .max(30, 'El número maximo de caracteres es 30')
-      .required('Campo obligatorio'),
+      .min(8, "El número mínimo de caracteres es 8")
+      .max(30, "El número maximo de caracteres es 30")
+      .required("Campo obligatorio"),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password')], 'La contraseña debe coincidir!')
-      //.when('password', {
-      // is: (value) => (value && value.length > 0 ? true : false),
-      //  then: () =>
-      //    Yup.string().oneOf(
-      //[Yup.ref('password')],
-      // 'La contraseña debe coincidir!',
-      // ),
-      // })
-      .required('Campo obligatorio'),
-  })
+      .oneOf([Yup.ref("password")], "La contraseña debe coincidir!")
+      .required("Campo obligatorio"),
+  });
   const formik = useFormik({
     initialValues: {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
     validationSchema: registerSchema,
     /*-------------------------------- SUBMIT ---------------------------------------------------*/
     onSubmit: (values) => {
-      console.log(values)
-      window.localStorage.setItem('register', JSON.stringify(values))
+      console.log(values);
+      window.localStorage.setItem("register", JSON.stringify(values));
     },
-  })
+  });
 
   return (
     <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
@@ -111,7 +103,7 @@ const RegisterPage = () => {
         Registrar
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;
