@@ -5,8 +5,8 @@ import useAuth from "../../hooks/useAuth";
 const RequireAuth = ({ children }) => {
   const { authed, login } = useAuth();
 
-  const saved = localStorage.getItem("login");
-  if (saved && !authed) login();
+  const saved = localStorage.getItem("auth_token");
+  // if (saved && !authed) login(localStorage.getItem);
 
   return saved ? children : <Navigate to="/login" replace />;
 };

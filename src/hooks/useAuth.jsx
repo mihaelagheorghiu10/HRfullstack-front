@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import { authService } from "../apiServices/authService";
 
 const authContext = React.createContext();
 
@@ -10,16 +11,22 @@ function useAuth() {
   return {
     authed,
     login(values) {
-      return new Promise((res) => {
-        window.localStorage.setItem("login", JSON.stringify(values));
-        setAuthed(true);
-        navigate("/");
-        res();
-      });
+      authService
+        .login({
+          email: values.email,
+          password: values.password,
+        })
+        .then(() => {
+          setAuthed(true);
+          navigate("/");
+        });
     },
     logout() {
       return new Promise((res) => {
-        window.localStorage.removeItem("login");
+        window.localStorage.removeItem("auth");
+        window.localStorage.removeItem("auth_token");
+        window.localStorage.removeItem("auth_email");
+
         setAuthed(false);
         res();
       });

@@ -1,34 +1,34 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/employees";
+const endPoint = "/employees";
 
 const employeeApiService = {
   getAll() {
-    return axios.get(baseUrl).then(response => response.data);
+    return axios.get(endPoint).then(response => response.data);
   },
   getById(id) {
-    return axios.get(baseUrl + `/${id}`).then((response) => response.data);
+    return axios.get(endPoint + `/${id}`).then((response) => response.data);
   },
   searchBy(name, dni, position, location) {
     return axios.get(
-      baseUrl
+      endPoint
       + `/search?name=${name}&dni=${dni}&position=${position}&location=${location}`)
       .then(response => response.data);
   },
   create(data) {
     return axios
-      .post(baseUrl, data)
+      .post(endPoint, data)
       .then((response) => response.data)
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   },
   editById(id, changes) {
     return axios
-      .put(baseUrl + `/${id}`, changes)
+      .put(endPoint + `/${id}`, changes)
       .then((response) => response.data)
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.error(err.message));
   },
   deleteById(id) {
-    return axios.delete(baseUrl + `/${id}`).then((response) => response.data);
+    return axios.delete(endPoint + `/${id}`).then((response) => response.data);
   }
 }
 

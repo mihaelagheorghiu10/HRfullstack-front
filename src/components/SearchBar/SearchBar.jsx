@@ -8,8 +8,6 @@ export default function SearchBar({
 }) {
   //const [searchBy, setSearchBy] = useState("Por nombre");
 
-  //console.log(searchBy);
-
   return (
     <div className={styles.searchBarContainer}>
       <select

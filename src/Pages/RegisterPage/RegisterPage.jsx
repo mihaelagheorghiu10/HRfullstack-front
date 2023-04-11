@@ -30,7 +30,6 @@ const RegisterPage = () => {
     validationSchema: registerSchema,
     /*-------------------------------- SUBMIT ---------------------------------------------------*/
     onSubmit: (values) => {
-      console.log(values);
       window.localStorage.setItem("register", JSON.stringify(values));
     },
   });

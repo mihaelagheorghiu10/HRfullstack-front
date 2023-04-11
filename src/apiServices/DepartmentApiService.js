@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:8080/departments'
+const endpoint = '/departments'
 
 const departmentApiService = {
   getAll() {
-    return axios.get(baseUrl).then((response) => response.data)
+    return axios.get(endpoint).then((response) => response.data)
   },
   getById(id) {
-    return axios.get(baseUrl + `/${id}`).then((response) => response.data)
+    return axios.get(endpoint + `/${id}`).then((response) => response.data)
   },
   //   searchBy(name, dni, position, location) {
   //     return axios.get(
@@ -18,19 +18,19 @@ const departmentApiService = {
 
   create(data) {
     return axios
-      .post(baseUrl, data)
+      .post(endpoint, data)
       .then((response) => response.data)
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
   },
 
   editById(id, changes) {
     return axios
-      .put(baseUrl + `/${id}`, changes)
+      .put(endpoint + `/${id}`, changes)
       .then((response) => response.data)
   },
 
   deleteById(id) {
-    return axios.delete(baseUrl + `/${id}`).then((response) => response.data)
+    return axios.delete(endpoint + `/${id}`).then((response) => response.data)
   },
 }
 
