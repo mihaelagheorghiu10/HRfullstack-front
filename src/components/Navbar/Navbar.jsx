@@ -19,12 +19,13 @@ export default function Navbar() {
       </div>
       <div className={styles.divHamburguesa}>
         {/* <GiHamburgerMenu className={styles.hamburgerIcon} /> */}
-        {!authed ? <Link to="/login">Login</Link> : null}
-        {authed ? (
+        {!authed ? (
+          <Link to="/login">Login</Link>
+        ) : (
           <Link to="/" onClick={async () => logout()}>
             Logout
           </Link>
-        ) : null}
+        )}
       </div>
     </div>
 
