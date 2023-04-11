@@ -23,6 +23,7 @@ axios.interceptors.response.use(
     console.error(error.response);
     return Promise.reject(error);
   }
+  
 );
 
 export default axios;
