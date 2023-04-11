@@ -30,6 +30,7 @@ const employeeApiService = {
   deleteById(id) {
     return axios.delete(endPoint + `/${id}`).then((response) => response.data);
   }
+  
 }
 
 export default employeeApiService;
