@@ -45,6 +45,10 @@
   width: 130px !important;
 }
 
+.employeePositionHead {
+  width: 160px !important;
+}
+
 .employeeIdHead svg {
   font-size: 35px !important;
   color: #992b9c;
