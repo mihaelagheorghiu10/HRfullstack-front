@@ -5,7 +5,10 @@ import { authService } from "../apiServices/authService";
 const authContext = React.createContext();
 
 function useAuth() {
-  const [authed, setAuthed] = React.useState(false);
+  const [authed, setAuthed] = React.useState(
+    localStorage.getItem("auth_token") !== undefined &&
+      localStorage.getItem("auth_token") !== null
+  );
   const navigate = useNavigate();
 
   return {

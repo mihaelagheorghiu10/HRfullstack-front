@@ -86,7 +86,7 @@ export default function EmployeeForm({
         ? new Date(userToEdit.birthDate).toISOString().split("T")[0]
         : "",
       dni: isEditMode ? userToEdit.dni : "",
-      department: isEditMode ? userToEdit.department.id : "0",
+      department: isEditMode ? userToEdit.department.id : "1",
     },
     validationSchema: userSchema,
     onSubmit: (values) => {
